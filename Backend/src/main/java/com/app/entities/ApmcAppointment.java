@@ -1,7 +1,10 @@
 package com.app.entities;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -35,6 +38,6 @@ public class ApmcAppointment extends BaseEntity {
 	private Farmer farmer;
 	
 	@OneToMany(cascade = CascadeType.ALL, orphanRemoval = true /* , fetch = FetchType.EAGER */ )
-	private List<Product> emps = new ArrayList<>();
+	private List<Product> products = new ArrayList<>();
 	
 }
