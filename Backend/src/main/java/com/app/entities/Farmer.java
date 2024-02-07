@@ -2,6 +2,7 @@ package com.app.entities;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.List;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -14,7 +15,6 @@ import javax.persistence.Table;
 
 import org.springframework.format.annotation.DateTimeFormat;
 
-import antlr.collections.List;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -50,21 +50,21 @@ public class Farmer extends BaseEntity{
 	
 	
 	//One to many association betn farmer and crops  -- unidir
-	@OneToMany(mappedBy = "crop", cascade = CascadeType.ALL, orphanRemoval = true /* , fetch = FetchType.EAGER */ )
-	private List<Crop> croplist = new ArrayList<>();
+	@OneToMany
+	private List<Crop> cropList = new ArrayList<>();
 	
 	
 	//one to Many association betn Farmer --> APMCAppointement -- bidir
-	@OneToMany(mappedBy = "apmcappointment", cascade = CascadeType.ALL, orphanRemoval = true /* , fetch = FetchType.EAGER */ )
-	private List<ApmcAppointment> appointmentlist = new ArrayList<>();
+	@OneToMany(mappedBy = "farmer", cascade = CascadeType.ALL, orphanRemoval = true /* , fetch = FetchType.EAGER */ )
+	private List<ApmcAppointment> appointmentList = new ArrayList<>();
 	
 	public void addAppointment(ApmcAppointment appointment) {
-		appointmentlist.add(appointment);//farmer-->apmc
+		appointmentList.add(appointment);//farmer<-->apmc
 		appointment.setFarmer(this);
 	}
 	
-	public void removeAppointment(ApmcAppointment appoitment) {
-		appointmentlist.remove(appointment);
+	public void removeAppointment(ApmcAppointment appointment) {
+		appointmentList.remove(appointment);
 		appointment.setFarmer(null);
 	}
 	
