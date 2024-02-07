@@ -54,12 +54,12 @@ public class Farmer extends BaseEntity{
 	private List<Crop> cropList = new ArrayList<>();
 	
 	
-	//one to Many association betn Farmer --> APMCAppointement -- bidir
+	//one to Many association betn Farmer <--> APMCAppointement -- bidir
 	@OneToMany(mappedBy = "farmer", cascade = CascadeType.ALL, orphanRemoval = true /* , fetch = FetchType.EAGER */ )
 	private List<ApmcAppointment> appointmentList = new ArrayList<>();
 	
 	public void addAppointment(ApmcAppointment appointment) {
-		appointmentList.add(appointment);//farmer<-->apmc
+		appointmentList.add(appointment);//farmer<-->ApmcAppointment
 		appointment.setFarmer(this);
 	}
 	
