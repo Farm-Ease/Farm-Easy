@@ -49,7 +49,7 @@ public class Farmer extends BaseEntity{
 	private String password;
 	
 	
-	//One to many association betn farmer and crops  -- unidir
+	//One to many association betn farmer and crops  -- unidirectional
 	@OneToMany
 	private List<Crop> cropList = new ArrayList<>();
 	
@@ -59,7 +59,7 @@ public class Farmer extends BaseEntity{
 	private List<ApmcAppointment> appointmentList = new ArrayList<>();
 	
 	public void addAppointment(ApmcAppointment appointment) {
-		appointmentList.add(appointment);//farmer<-->ApmcAppointment
+		appointmentList.add(appointment);//farmer<--->ApmcAppointment
 		appointment.setFarmer(this);
 	}
 	
