@@ -1,7 +1,9 @@
 package com.app.service;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
+import org.aspectj.weaver.NewConstructorTypeMunger;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -14,6 +16,7 @@ import com.app.dto.ApiResponse;
 import com.app.dto.ApmcAppointmentDTO;
 import com.app.dto.CounsellorDTO;
 import com.app.dto.FarmerAppointmentDTO;
+import com.app.dto.FarmerDTO;
 import com.app.entities.ApmcAppointment;
 import com.app.entities.Counsellor;
 import com.app.entities.Farmer;
@@ -50,6 +53,23 @@ public class FarmerServiceImpl implements FarmerService{
 				orElseThrow(()-> new ResourceNotFoundException("Invalid appt id"));
 		appointmentDao.delete(appt);
 		return new ApiResponse("Appointment with id"+appt.getId()+"deleted....");
+	}
+
+
+
+
+
+	@Override
+	public List<FarmerDTO> getFarmerByName(String farmerName) {
+		List<Farmer> farmers = farmerDao.findAllByName(farmerName);
+		
+		if(!farmers.isEmpty()) {
+			return farmerDao.findAll()
+			.stream()
+			.map(farmer -> mapper.map(farmer, FarmerDTO.class))
+			.collect(Collectors.toList());
+		}
+		throw new ResourceNotFoundException("No such farmer Exists !");
 	}
 	
 	

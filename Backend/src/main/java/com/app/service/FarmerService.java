@@ -15,7 +15,7 @@ public interface FarmerService {
 
 	FarmerAppointmentDTO addAppointment(FarmerAppointmentDTO apptDTO);
 
-
+	List <FarmerDTO> getFarmerByName(String farmerName);
 	ApiResponse deleteAppointment(Long appointmentId);
 
 }
