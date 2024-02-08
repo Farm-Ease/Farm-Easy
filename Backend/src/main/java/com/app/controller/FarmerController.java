@@ -10,12 +10,14 @@ import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.app.dto.ApmcAppointmentDTO;
 import com.app.dto.FarmerAppointmentDTO;
+import com.app.dto.FarmerDTO;
 import com.app.service.FarmerService;
 
 
@@ -28,6 +30,12 @@ public class FarmerController {
 	private FarmerService farmerService;
 	
 	
+	@PutMapping("/farmers/{farmerId}")//update farmer
+	public ResponseEntity<?> updateFarmer(@PathVariable Long farmerId, @RequestBody @Valid FarmerDTO farmerDto){
+		System.out.println("In update farmer "+farmerId+" "+farmerDto);
+		return ResponseEntity.ok(farmerService.updateFarmer(farmerId,farmerDto));
+	}
+	
 	@PostMapping
 	public ResponseEntity<?> bookAppointment(@RequestBody @Valid FarmerAppointmentDTO apptDTO){
 		System.out.println("Inside book appt "+apptDTO);
@@ -37,11 +45,19 @@ public class FarmerController {
 				
 	}
 	
+	@PutMapping("/{appointmentId}")
+	public ResponseEntity<?> updateAppointment(@PathVariable Long appointmentId,@RequestBody @Valid ApmcAppointmentDTO apptDto){
+		System.out.println("In update appt "+appointmentId+" "+ apptDto);
+		return ResponseEntity.ok(farmerService.updateAppoitnment(appointmentId,apptDto));
+	}
+	
 	
 	@DeleteMapping("/{appointmentId}")
 	public ResponseEntity<?> deleteAppointment(@PathVariable Long appointmentId) {
 		System.out.println("in delete counsellor " + appointmentId);
 		return ResponseEntity.ok(farmerService.deleteAppointment(appointmentId));
 	}
+	
+	
 
 }
