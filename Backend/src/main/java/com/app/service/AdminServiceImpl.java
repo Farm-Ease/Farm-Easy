@@ -10,8 +10,10 @@ import org.springframework.transaction.annotation.Transactional;
 import com.app.custom_exceptions.ResourceNotFoundException;
 import com.app.dao.AdminDao;
 import com.app.dao.CounsellorDao;
+import com.app.dao.FarmerDao;
 import com.app.dto.ApiResponse;
 import com.app.dto.CounsellorDTO;
+import com.app.dto.FarmerDTO;
 import com.app.entities.Counsellor;
 
 @Service
@@ -25,6 +27,9 @@ public class AdminServiceImpl implements AdminService{
 
 	@Autowired
 	private ModelMapper mapper;
+	
+	@Autowired
+	private FarmerDao farmerDao;
 
 	@Override
 	public List<CounsellorDTO> getAllCounsellor() {
@@ -47,5 +52,14 @@ public class AdminServiceImpl implements AdminService{
 				orElseThrow(() -> new ResourceNotFoundException("Invalid emp id"));
 		counsellorDao.delete(counsellor);
 		return new ApiResponse("Counsellor with ID " + counsellor.getId() + " deleted....");
+	}
+	
+	@Override
+	public List<FarmerDTO> getAllFarmers() {
+		
+		return farmerDao.findAll()
+				.stream()
+				.map(farm -> mapper.map(farm, FarmerDTO.class))
+				.collect(Collectors.toList());
 	}
 }

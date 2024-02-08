@@ -23,5 +23,6 @@ public class Product extends BaseEntity {
 	@Column(name = "Product_Name",length = 20,nullable = false)
 	private String product_nameString;
 	
-	
+	@Column(nullable = false)
+	private Double quantity;
 }

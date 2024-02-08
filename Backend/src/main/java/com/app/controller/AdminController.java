@@ -23,7 +23,14 @@ public class AdminController {
 	@Autowired
 	private AdminService adminService;
 	
-	@GetMapping
+	@GetMapping("/farmers")
+	public ResponseEntity<?> getAllFarmers() {
+		System.out.println("in get all farmers" );
+		return ResponseEntity
+				.ok(adminService.getAllFarmers());
+	}
+	
+	@GetMapping("/counsellors")
 	public ResponseEntity<?> getAllCounsellor() {
 		System.out.println("in get all counsellor" );
 		return ResponseEntity
