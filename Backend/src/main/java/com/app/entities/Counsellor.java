@@ -24,4 +24,5 @@ public class Counsellor extends BaseEntity {
 	private String state;
 	private String district;
 	private String village;
+	private String password;
 }
