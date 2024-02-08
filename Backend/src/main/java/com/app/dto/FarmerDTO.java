@@ -24,7 +24,7 @@ public class FarmerDTO {
 	private String name;
 	@NotBlank
 	private String email;
-	@JsonProperty(access = Access.WRITE_ONLY) //required only in de-ser.
+	@JsonProperty(access = Access.WRITE_ONLY) //de-ser.
 	private String password;
 	@JsonProperty(access = Access.WRITE_ONLY)
 	private String confirmPassword;

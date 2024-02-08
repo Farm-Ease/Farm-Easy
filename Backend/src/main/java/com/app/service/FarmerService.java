@@ -17,12 +17,9 @@ public interface FarmerService {
 
 	FarmerAppointmentDTO addAppointment(FarmerAppointmentDTO apptDTO);
 
-
 	ApiResponse deleteAppointment(Long appointmentId);
 
-
 	ApmcAppointmentDTO updateAppoitnment(Long appointmentId, @Valid ApmcAppointmentDTO apptDto);
-
 
 	FarmerDTO updateFarmer(Long farmerId, @Valid FarmerDTO farmerDto);
 

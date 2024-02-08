@@ -30,7 +30,7 @@ public class FarmerController {
 	private FarmerService farmerService;
 	
 	
-	@PutMapping("/farmers/{farmerId}")
+	@PutMapping("/farmers/{farmerId}")//update farmer
 	public ResponseEntity<?> updateFarmer(@PathVariable Long farmerId, @RequestBody @Valid FarmerDTO farmerDto){
 		System.out.println("In update farmer "+farmerId+" "+farmerDto);
 		return ResponseEntity.ok(farmerService.updateFarmer(farmerId,farmerDto));

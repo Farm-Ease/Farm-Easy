@@ -75,7 +75,7 @@ public class FarmerServiceImpl implements FarmerService{
 
 	@Override
 	public FarmerDTO updateFarmer(Long farmerId, @Valid FarmerDTO farmerDto) {
-		// TODO Auto-generated method stub
+		// TODO Auto-generated method stubs 
 		Farmer  farmer = farmerDao.findById(farmerId).orElseThrow(()-> new ResourceNotFoundException("Invalid farmer id"));
 		farmer.setName(farmerDto.getName());
 		farmer.setNumber(farmerDto.getNumber());

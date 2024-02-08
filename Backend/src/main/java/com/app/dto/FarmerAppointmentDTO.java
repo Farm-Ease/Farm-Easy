@@ -21,13 +21,12 @@ import lombok.ToString;
 @ToString
 public class FarmerAppointmentDTO {
 
-	@JsonProperty(access = Access.READ_ONLY)
+	@JsonProperty(access = Access.READ_ONLY)//deser
 	private Long farmerId;
 	@JsonProperty(value = "district")
 	private String district;
 	@NotBlank
 	private String name;
-	
 	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	private LocalDate date;
 	private Double quantity;
