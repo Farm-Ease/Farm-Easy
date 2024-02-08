@@ -2,6 +2,8 @@ package com.app.service;
 
 import java.util.List;
 
+import javax.validation.Valid;
+
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -17,5 +19,16 @@ public interface FarmerService {
 
 
 	ApiResponse deleteAppointment(Long appointmentId);
+
+	ApmcAppointmentDTO updateAppoitnment(Long appointmentId, @Valid ApmcAppointmentDTO apptDto);
+
+	FarmerDTO updateFarmer(Long farmerId, @Valid FarmerDTO farmerDto);
+	
+	
+	
+	
+	
+	
+	List <FarmerDTO> getFarmerByName(String farmerName);
 
 }
