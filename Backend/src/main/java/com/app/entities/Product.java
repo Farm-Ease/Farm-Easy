@@ -21,7 +21,7 @@ public class Product extends BaseEntity {
 	private Double rate;
 	
 	@Column(name = "Product_Name",length = 20,nullable = false)
-	private String product_nameString;
+	private String productName;
 	
 	@Column(nullable = false)
 	private Double quantity;

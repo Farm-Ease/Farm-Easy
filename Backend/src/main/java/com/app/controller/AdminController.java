@@ -14,7 +14,9 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import com.app.dto.CounsellorDTO;
+import com.app.dto.ProductDTO;
 import com.app.service.AdminService;
+import com.app.service.ProductService;
 
 @RestController
 @RequestMapping("/admin")
@@ -22,6 +24,9 @@ import com.app.service.AdminService;
 public class AdminController {
 	@Autowired
 	private AdminService adminService;
+	
+	@Autowired
+	private ProductService productService;
 	
 	@GetMapping("/farmers")
 	public ResponseEntity<?> getAllFarmers() {
@@ -49,5 +54,21 @@ public class AdminController {
 	public ResponseEntity<?> deleteCounsellor(@PathVariable Long counsellorId) {
 		System.out.println("in delete counsellor " + counsellorId);
 		return ResponseEntity.ok(adminService.deleteCounsellor(counsellorId));
+	}
+	
+	@PostMapping("/products")
+	public ResponseEntity<?> addNewProduct(@RequestBody @Valid ProductDTO productDTO) {
+		System.out.println("in add product " + productDTO);
+		return ResponseEntity
+				.status(HttpStatus.CREATED)
+				.body(productService.addNewProduct(productDTO));
+	}
+	
+	@PutMapping("/products/{productId}")
+	public ResponseEntity<?> updateProduct(@PathVariable Long productId,
+			@RequestBody @Valid ProductDTO productDTO) {
+		System.out.println("in update product " +productId+" "+ productDTO);		
+		return ResponseEntity.
+				ok(productService.updateProduct(productId, productDTO));
 	}
 }
