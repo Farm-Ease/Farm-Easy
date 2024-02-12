@@ -37,7 +37,6 @@ public class ApmcAppointment extends BaseEntity {
 	@JoinColumn(name = "farmer_id")
 	private Farmer farmer;
 	
-	@OneToMany(cascade = CascadeType.ALL, orphanRemoval = true /* , fetch = FetchType.EAGER */ )
+	@OneToMany(mappedBy = "apmcAppointment",cascade = CascadeType.ALL, orphanRemoval = true /* , fetch = FetchType.EAGER */ )
 	private List<Product> products = new ArrayList<>();
-	
 }

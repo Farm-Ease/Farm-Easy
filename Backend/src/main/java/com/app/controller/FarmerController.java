@@ -44,7 +44,7 @@ public class FarmerController {
 		return ResponseEntity.ok(farmerService.updateFarmer(farmerId,farmerDto));
 	}
 	
-	@PostMapping
+	@PostMapping("/appointment")
 	public ResponseEntity<?> bookAppointment(@RequestBody @Valid FarmerAppointmentDTO apptDTO){
 		System.out.println("Inside book appt "+apptDTO);
 		return ResponseEntity

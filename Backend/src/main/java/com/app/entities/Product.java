@@ -2,6 +2,8 @@ package com.app.entities;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
 import lombok.AllArgsConstructor;
@@ -25,4 +27,8 @@ public class Product extends BaseEntity {
 	
 	@Column(nullable = false)
 	private Double quantity;
+	
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "apmcAppointment_id")
+	private ApmcAppointment apmcAppointment;
 }
