@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.app.dto.ApmcAppointmentDTO;
+import com.app.dto.CounsellorDTO;
 import com.app.dto.FarmerAppointmentDTO;
 import com.app.dto.FarmerDTO;
 import com.app.service.FarmerService;
@@ -29,6 +30,13 @@ public class FarmerController {
 	@Autowired
 	private FarmerService farmerService;
 	
+	@PostMapping("/farmer")
+	public ResponseEntity<?> addNewFarmer(@RequestBody @Valid FarmerDTO farmerDto) {
+		System.out.println("in add farmer " + farmerDto);
+		return ResponseEntity
+				.status(HttpStatus.CREATED)
+				.body(farmerService.addNewFarmer(farmerDto));
+	}
 	
 	@PutMapping("/farmers/{farmerId}")//update farmer
 	public ResponseEntity<?> updateFarmer(@PathVariable Long farmerId, @RequestBody @Valid FarmerDTO farmerDto){

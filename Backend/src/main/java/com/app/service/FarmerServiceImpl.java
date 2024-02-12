@@ -44,11 +44,8 @@ public class FarmerServiceImpl implements FarmerService{
 		ApmcAppointment persistentAppt = appointmentDao.save(apptEntity);
 		return mapper.map(persistentAppt, FarmerAppointmentDTO.class);
 	}
+
 	
-	
-
-
-
 	@Override
 	public ApiResponse deleteAppointment(Long appointmentId) {
 		// TODO Auto-generated method stub
@@ -69,9 +66,6 @@ public class FarmerServiceImpl implements FarmerService{
 	}
 
 
-
-
-
 	@Override
 	public FarmerDTO updateFarmer(Long farmerId, @Valid FarmerDTO farmerDto) {
 		// TODO Auto-generated method stubs 
@@ -88,7 +82,6 @@ public class FarmerServiceImpl implements FarmerService{
 	
 	
 	@Override
-
 	public List<FarmerDTO> getFarmerByName(String farmerName) {
 		List<Farmer> farmers = farmerDao.findAllByName(farmerName);
 		
@@ -99,6 +92,14 @@ public class FarmerServiceImpl implements FarmerService{
 			.collect(Collectors.toList());
 		}
 		throw new ResourceNotFoundException("No such farmer Exists !");
+	}
+
+
+	@Override
+	public FarmerDTO addNewFarmer(@Valid FarmerDTO farmerDto) {
+		Farmer farmerEntity = mapper.map(farmerDto, Farmer.class);
+		Farmer persistentDept = farmerDao.save(farmerEntity);
+		return mapper.map(persistentDept, FarmerDTO.class);
 	}
 	
 		

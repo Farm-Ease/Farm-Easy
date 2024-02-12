@@ -43,7 +43,7 @@ public class AdminController {
 	}
 	
 	@PostMapping
-	public ResponseEntity<?> addNewDepartment(@RequestBody @Valid CounsellorDTO counsellorDto) {
+	public ResponseEntity<?> addNewCounsellor(@RequestBody @Valid CounsellorDTO counsellorDto) {
 		System.out.println("in add counsellor " + counsellorDto);
 		return ResponseEntity
 				.status(HttpStatus.CREATED)
