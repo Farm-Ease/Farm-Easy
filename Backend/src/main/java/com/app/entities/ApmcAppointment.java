@@ -27,7 +27,7 @@ import com.app.entities.*;
 public class ApmcAppointment extends BaseEntity {
 	
 	@Column(nullable = false)
-	private String transaction;
+	private Transaction transaction;
 	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	private LocalDate date;
 	private Double quantity;

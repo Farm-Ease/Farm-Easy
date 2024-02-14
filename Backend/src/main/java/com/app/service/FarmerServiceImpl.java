@@ -61,7 +61,7 @@ public class FarmerServiceImpl implements FarmerService{
 		appt.setDate(apptDto.getDate());
 		appt.setQuantity(apptDto.getQuantity());
 		//appt.setProducts(apptDto.getProducts());
-		appt.setTransaction(apptDto.getTransaction());
+		//appt.setTransaction();
 		return mapper.map(appt, ApmcAppointmentDTO.class);
 	}
 
