@@ -38,7 +38,7 @@ public class Farmer extends BaseEntity{
 	@Column(length=12,nullable = false) // =>NOT NULL
 	private String adhaar;
 	@Column(length=30,nullable = false) // =>NOT NULL
-	@DateTimeFormat(pattern = "yyyy-MM-dd")
+	//@DateTimeFormat(pattern = "yyyy-MM-dd")
 	private LocalDate dob;
 	@Column(length=30,nullable = false) // =>NOT NULL
 	private String state;
@@ -46,17 +46,17 @@ public class Farmer extends BaseEntity{
 	private String district;
 	@Column(length=30,nullable = false) // =>NOT NULL
 	private String village;
-	@Column(length=30,nullable = false) // =>NOT NULL
+	//@Column(length = 300, nullable = false)
 	private String password;
 	
 	
 	//One to many association betn farmer and crops  -- unidirectional
-	@OneToMany(mappedBy = "farmer",cascade = CascadeType.ALL, orphanRemoval = true)
-	private List<Crop> cropList = new ArrayList<>();
+//	@OneToMany(mappedBy = "farmer" ,cascade = CascadeType.ALL, orphanRemoval = true)
+//	private List<Crop> cropList = new ArrayList<>();
 	
 	
 	//one to Many association betn Farmer <--> APMCAppointement -- bidirectional
-	@OneToMany(mappedBy = "farmer", cascade = CascadeType.ALL, orphanRemoval = true /* , fetch = FetchType.EAGER */ )
+	@OneToMany(mappedBy = "farmer",fetch = FetchType.EAGER, cascade = CascadeType.ALL, orphanRemoval = true /* , fetch = FetchType.EAGER */ )
 	private List<ApmcAppointment> appointmentList = new ArrayList<>();
 	
 	public void addAppointment(ApmcAppointment appointment) {
