@@ -1,19 +1,36 @@
 import React, { useState } from 'react'
 import './CounsellorLoginForm.css'
-import axios from 'axios';
-import { useCookies } from 'react-cookie';
-import {useNavigate} from "react-router-dom"
+import { toast } from 'react-toastify'
+import {Link, useNavigate} from "react-router-dom"
 import { Button } from '@mui/material';
+import { signinCounsellor } from '../../service/counsellor'
 function CounsellorLoginForm() {
-  const [email,setEmail]=useState(undefined);
-  const [password,setPassword]=useState(undefined);
-  const navigate=useNavigate();
-  const[cookies,setCookies]=useCookies(["user"]);
-  const handleSubmit=(event)=>{
-    if(email!=="" && email!==undefined && password!=="" && password!==undefined){
-     
- }
+  const [email, setEmail] = useState('')
+  const [password, setPassword] = useState('')
+
+  const navigate = useNavigate()
+
+  const onSignin = async () => {
+    if (email.length == 0) {
+      toast.warn('enter email')
+    } else if (password.length == 0) {
+      toast.warn('enter password')
+    } else {
+      // make the api call
+      const result = await signinCounsellor(email, password)
+      if (result['status'] == 'success') {
+        // cache the token
+        const token = result['data']['token']
+        sessionStorage['token'] = token
+
+        toast.success('Welcome to the "Farm-Easy"')
+        navigate('/')
+      } else {
+        toast.error(result['error'])
+      }
+    }
   }
+
   return (
     <div className="counsellorLoginForm">
 		<div className="header-text">
@@ -26,10 +43,10 @@ function CounsellorLoginForm() {
             <input onChange={(event)=>{
               setPassword(event.target.value);
             }} placeholder="Your Password" type="password" required /> 
-             <Button onClick={(event)=>{handleSubmit(event)}} type="submit" id="button" variant="contained">Login</Button>
-            <span><a href="/login">Farmer Login</a></span> 
+             <Button onClick={onSignin} type="submit" id="button" variant="contained">Login</Button>
+            <span><Link to='/login'>Farmer Login</Link></span> 
             <br/>
-            <span><a href="/adminlogin">Admin Login</a></span>
+            <span><Link to='/adminLogin'>Admin Login</Link></span>
             </form>
 	</div>
   )
