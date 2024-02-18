@@ -4,29 +4,21 @@ import Button from '@mui/material/Button';
 import * as EmailValidator from "email-validator";
 import Select from "react-select";
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from 'react-router-dom'
+import { toast } from 'react-toastify'
 import axios from 'axios';
+import { RegisterUser } from '../../service/user'
 import WarningModal from "../../Components/warningModel/WarningModal";
+
 function Register() {
-    const[show,setShow]=useState(false);
-    const [warn,SetWarn]=useState("No error");
-    const[name,setName]=React.useState();
-    const[email,setEmail]=React.useState();
-    const[number,setNumber]=React.useState();
-    const[aadhar,setAadhar]=React.useState();
-    const[village,setVillage]=React.useState();
-    const[password,setPassword]=React.useState();
-    const[confirm,setConfirm]=React.useState();
-    const[stateName,setStateName]=React.useState();
-    const[districtName,setDistrictName]=useState();
     const [type,setType]=useState("text");
-    const [dob,setDob]=useState();
+
     var [districts,setDistricts]=useState([
         {
             "value":"no state selected","label":"no state selected"
         }
     ]);
-    const navigate=useNavigate();
+    
     let statesAndDistricts=require("../../districtsAndStatesData.json");
     const states=statesAndDistricts.map(r=>r.state);
     const handlechange=(event)=>{
@@ -46,9 +38,55 @@ function Register() {
         }
     ))
 
-    const RegisterUser = async () => {
 
+  const [name, setName] = useState('')
+  const [email, setEmail] = useState('')
+  const [password, setPassword] = useState('')
+  const [confirmPassword, setConfirmPassword] = useState('')
+  const [number, setNumber] = useState('')
+  const [aadhaar, setAadhaar] = useState('')
+  const [dob, setDob] = useState('')
+  const [stateName, setStateName] = useState('')
+  const [districtName, setDistrictName] = useState('')
+  const [village, setVillage] = useState('')
+  
+  // get the navigation function
+  const navigate = useNavigate()
+
+  const onSignup = async () => {
+    if (name.length == 0) {
+      toast.warn('enter name')
+    } else if (email.length == 0) {
+      toast.warn('enter email')
+    } else if (password.length == 0) {
+      toast.warn('enter password')
+    } else if (confirmPassword.length == 0) {
+      toast.warn('enter confirm password')
+    } else if (password != confirmPassword) {
+      toast.warn('password does not match')
+    } else if (number.length == 0) {
+      toast.warn('enter number')
+    } else if (aadhaar.length == 0) {
+      toast.warn('enter aadhaar')
+    } else if (dob.length == 0) {
+      toast.warn('enter date of birth')
+    } else if (state.length == 0) {
+      toast.warn('enter state')
+    } else if (districts.length == 0) {
+      toast.warn('enter state')
+    } else if (village.length == 0) {
+      toast.warn('enter state')
+    } else {
+      // make the api call
+      const result = await RegisterUser(name, email, number, aadhaar, dob, stateName, districtName, village, password)
+      if (result['status'] == 'success') {
+        toast.success('Successfully registered the user')
+        navigate('/')
+      } else {
+        toast.error(result['error'])
+      }
     }
+  }
     return (
         <>
         
@@ -67,7 +105,7 @@ function Register() {
                     setNumber(event.target.value);
                 }}/>
                 <input type="text" placeholder="Your Aadhar number (xxx xxxx xxxx)" maxLength={14} required onChange={(event)=>{
-                    setAadhar(event.target.value);
+                    setAadhaar(event.target.value);
                 }}/>
                 <input onChange={(event)=>{
                     setDob(event.target.value);
@@ -83,16 +121,13 @@ function Register() {
                     setPassword(event.target.value);
                 }}/>
                 <input type="password" placeholder="Confirm password.." required maxLength={6} onChange={(event)=>{
-                    setConfirm(event.target.value);
+                    setConfirmPassword(event.target.value);
                 }}/>
-                <Button onClick={(event)=>{RegisterUser(event)}} type="submit" id="button" variant="contained">Register</Button>
-                <p>Already have a account? <a href="/login">login</a></p>
+                <Button onClick={(event)=>{onSignup(event)}} type="submit" id="button" variant="contained">Register</Button>
+                <p>Already have a account? <Link to='/login'>login</Link></p>
                 </form>
             </div>
             </div>
-            <WarningModal show={show} content={warn} close={()=>{
-                setShow(false);
-            }} />
         </>
     )
 }

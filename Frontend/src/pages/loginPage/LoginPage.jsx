@@ -1,19 +1,36 @@
 import React, { useState } from 'react'
 import './LoginForm.css'
-import axios from 'axios';
-import { useCookies } from 'react-cookie';
-import {useNavigate} from "react-router-dom"
+import {Link,useNavigate} from "react-router-dom"
 import { Button } from '@mui/material';
+import { toast } from 'react-toastify'
+import { signinUser } from '../../service/user'
 
 function LoginForm() {
-  const [email,setEmail]=useState(undefined);
-  const [password,setPassword]=useState(undefined);
-  const navigate=useNavigate();
-  const[cookies,setCookies]=useCookies(["user"]);
-  const handleSubmit=(event)=>{
-    if(email!=="" && email!==undefined && password!=="" && password!==undefined){
-     
- }
+  const [email, setEmail] = useState('')
+  const [password, setPassword] = useState('')
+
+  const navigate = useNavigate()
+
+  const onSignin = async () => {
+    if (email.length == 0) {
+      toast.warn('enter email')
+    } else if (password.length == 0) {
+      toast.warn('enter password')
+    } else {
+      // make the api call
+      const result = await signinUser(email, password)
+      if (result['status'] == 'success') {
+        // cache the token
+        const token = result['data']['token']
+        sessionStorage['token'] = token
+
+        toast.success('Welcome to the "Farm-Easy"')
+
+        navigate('/')
+      } else {
+        toast.error(result['error'])
+      }
+    }
   }
   return (
     <div className="loginForm">
@@ -27,12 +44,12 @@ function LoginForm() {
             <input onChange={(event)=>{
               setPassword(event.target.value);
             }} placeholder="Your Password" type="password" required /> 
-             <Button onClick={(event)=>{handleSubmit(event)}} type="submit" id="button" variant="contained">Login</Button>
-            <span>Or Click here to <a href="/register">Register</a></span> 
+             <Button onClick={onSignin} type="submit" id="button" variant="contained">Login</Button>
+            <span>Or Click here to <Link to='/register'>register</Link></span> 
             <br />
-            <span><a href="/adminlogin">Admin Login</a></span>
+            <span><a href="/adminLogin">Admin Login</a></span>
             <br />
-            <span><a href="/counsellorlogin">Counsellor Login</a></span>
+            <span><a href="/counsellorLogin">Counsellor Login</a></span>
             </form>
 	</div>
   )
