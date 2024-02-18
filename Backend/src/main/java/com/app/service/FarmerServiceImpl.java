@@ -9,6 +9,7 @@ import javax.validation.Valid;
 
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -20,6 +21,7 @@ import com.app.dto.ApmcAppointmentDTO;
 import com.app.dto.CounsellorDTO;
 import com.app.dto.FarmerAppointmentDTO;
 import com.app.dto.FarmerDTO;
+import com.app.dto.Signup;
 import com.app.entities.ApmcAppointment;
 import com.app.entities.Counsellor;
 import com.app.entities.Farmer;
@@ -36,6 +38,9 @@ public class FarmerServiceImpl implements FarmerService{
 	
 	@Autowired
 	private ModelMapper mapper;
+	
+	@Autowired
+	private PasswordEncoder encoder;
 	
 	@Override
 	public FarmerAppointmentDTO addAppointment(FarmerAppointmentDTO farmerApptDTO) {
@@ -94,9 +99,20 @@ public class FarmerServiceImpl implements FarmerService{
 	@Override
 	public FarmerDTO addNewFarmer(@Valid FarmerDTO farmerDto) {
 		Farmer farmerEntity = mapper.map(farmerDto, Farmer.class);
-		Farmer persistentDept = farmerDao.save(farmerEntity);
-		return mapper.map(persistentDept, FarmerDTO.class);
+		Farmer persistFarmer = farmerDao.save(farmerEntity);
+		return mapper.map(persistFarmer, FarmerDTO.class);
 	}
+
+
+	@Override
+	public Signup userRegistration(@Valid Signup reqdto) {
+		// TODO Auto-generated method stub
+		Farmer farmer = mapper.map(reqdto, Farmer.class);
+		farmer.setPassword(encoder.encode(farmer.getPassword()));//pwd : encrypted using SHA
+		Farmer persistFarmer = farmerDao.save(farmer);
+		return mapper.map(persistFarmer, Signup.class);
+	}
+
 	
 		
 }
