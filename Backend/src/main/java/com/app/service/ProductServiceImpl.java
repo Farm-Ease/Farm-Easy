@@ -31,6 +31,7 @@ public class ProductServiceImpl implements ProductService {
 	public ProductDTO updateProduct(Long productId, ProductDTO prod) {
 		Product product = productDao.findById(productId).
 				orElseThrow(() -> new ResourceNotFoundException("Invalid Product Id!"));
+		product.setProductName(prod.getProductName());
 		product.setQuantity(prod.getQuantity());
 		product.setRate(prod.getRate());
 		return mapper.map(product, ProductDTO.class);

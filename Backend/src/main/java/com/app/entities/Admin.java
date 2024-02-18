@@ -16,9 +16,7 @@ import lombok.ToString;
 @ToString
 public class Admin extends BaseEntity{
 	@Column(length = 30)
-	private String firstName;
-	@Column(length = 30)
-	private String lastName;
+	private String name;
 	@Column(length = 30, unique = true)
 	private String email;
 	@Column(nullable = false)

@@ -10,6 +10,8 @@ import com.app.entities.Farmer;
 public interface FarmerDao extends JpaRepository<Farmer,Long>{
 	List <Farmer> findAllByName(String name);
 	
+	Optional<Farmer> findByName(String name);
+	
 	Optional<Farmer> findByEmail(String email);
 
 }

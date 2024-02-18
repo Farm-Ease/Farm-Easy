@@ -29,4 +29,13 @@ public class CounsellorServiceImpl implements CounsellorService {
 		return counsellorDTO;
 	}
 
+
+	@Override
+	public CounsellorDTO getCounsellorByDistrict(String district) {
+		return mapper.map(
+				counsellorDao.findByDistrict(district).orElseThrow(() -> new ResourceNotFoundException("Invalid District name!!!!")),
+				CounsellorDTO.class);
+		
+	}
+
 }

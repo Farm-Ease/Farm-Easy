@@ -28,7 +28,7 @@ public class Product extends BaseEntity {
 	@Column(nullable = false)
 	private Double quantity;
 	
-	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "apmcAppointment_id")
-	private ApmcAppointment apmcAppointment;
+//	@ManyToOne(fetch = FetchType.LAZY)
+//	@JoinColumn(name = "apmcAppointment_id")
+//	private ApmcAppointment apmcAppointment;
 }

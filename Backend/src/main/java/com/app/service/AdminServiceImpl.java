@@ -2,6 +2,9 @@ package com.app.service;
 
 import java.util.List;
 import java.util.stream.Collectors;
+
+import javax.validation.Valid;
+
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -9,11 +12,15 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.app.custom_exceptions.ResourceNotFoundException;
 import com.app.dao.AdminDao;
+import com.app.dao.ApmcAppointmentDao;
 import com.app.dao.CounsellorDao;
 import com.app.dao.FarmerDao;
+import com.app.dto.AdminDTO;
 import com.app.dto.ApiResponse;
+import com.app.dto.ApmcAppointmentDTO;
 import com.app.dto.CounsellorDTO;
 import com.app.dto.FarmerDTO;
+import com.app.entities.Admin;
 import com.app.entities.Counsellor;
 
 @Service
@@ -30,6 +37,9 @@ public class AdminServiceImpl implements AdminService{
 	
 	@Autowired
 	private FarmerDao farmerDao;
+	
+	@Autowired
+	private ApmcAppointmentDao apmcAppointmentDao;
 
 	@Override
 	public List<CounsellorDTO> getAllCounsellor() {
@@ -42,8 +52,8 @@ public class AdminServiceImpl implements AdminService{
 	@Override
 	public CounsellorDTO addNewCounsellor(CounsellorDTO counsellorDto) {
 		Counsellor counsellorEntity = mapper.map(counsellorDto, Counsellor.class);
-		Counsellor persistentDept = counsellorDao.save(counsellorEntity);
-		return mapper.map(persistentDept, CounsellorDTO.class);
+		Counsellor persistentCounsellor = counsellorDao.save(counsellorEntity);
+		return mapper.map(persistentCounsellor, CounsellorDTO.class);
 	}
 	
 	@Override
@@ -60,6 +70,21 @@ public class AdminServiceImpl implements AdminService{
 		return farmerDao.findAll()
 				.stream()
 				.map(farm -> mapper.map(farm, FarmerDTO.class))
+				.collect(Collectors.toList());
+	}
+
+	@Override
+	public AdminDTO addNewAdmin(@Valid AdminDTO adminDTO) {
+		Admin adminEntity = mapper.map(adminDTO, Admin.class);
+		Admin persistentAdmin = adminDao.save(adminEntity);
+		return mapper.map(persistentAdmin, AdminDTO.class);
+	}
+
+	@Override
+	public List<ApmcAppointmentDTO> getAllAppointment() {
+		return apmcAppointmentDao.findAll()
+				.stream()
+				.map(apmcAppointment -> mapper.map(apmcAppointment, ApmcAppointmentDTO.class))
 				.collect(Collectors.toList());
 	}
 }

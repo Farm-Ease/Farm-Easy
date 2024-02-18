@@ -13,6 +13,8 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+
+import com.app.dto.AdminDTO;
 import com.app.dto.CounsellorDTO;
 import com.app.dto.ProductDTO;
 import com.app.service.AdminService;
@@ -28,21 +30,36 @@ public class AdminController {
 	@Autowired
 	private ProductService productService;
 	
-	@GetMapping("/farmers")
+	@PostMapping("/addAdmin")
+	public ResponseEntity<?> addNewAdmin(@RequestBody @Valid AdminDTO adminDTO) {
+		System.out.println("in add admin " + adminDTO);
+		return ResponseEntity
+				.status(HttpStatus.CREATED)
+				.body(adminService.addNewAdmin(adminDTO));
+	}
+	
+	@GetMapping("/getFarmers")
 	public ResponseEntity<?> getAllFarmers() {
 		System.out.println("in get all farmers" );
 		return ResponseEntity
 				.ok(adminService.getAllFarmers());
 	}
 	
-	@GetMapping("/counsellors")
+	@GetMapping("/getAppointments")
+	public ResponseEntity<?> getAllAppointment() {
+		System.out.println("in get all appointment" );
+		return ResponseEntity
+				.ok(adminService.getAllAppointment());
+	}
+	
+	@GetMapping("/getCounsellors")
 	public ResponseEntity<?> getAllCounsellor() {
 		System.out.println("in get all counsellor" );
 		return ResponseEntity
 				.ok(adminService.getAllCounsellor());
 	}
 	
-	@PostMapping
+	@PostMapping("/addCounsellor")
 	public ResponseEntity<?> addNewCounsellor(@RequestBody @Valid CounsellorDTO counsellorDto) {
 		System.out.println("in add counsellor " + counsellorDto);
 		return ResponseEntity
@@ -50,13 +67,13 @@ public class AdminController {
 				.body(adminService.addNewCounsellor(counsellorDto));
 	}
 	
-	@DeleteMapping("/{counsellorId}")
+	@DeleteMapping("/deleteCounsellor/{counsellorId}")
 	public ResponseEntity<?> deleteCounsellor(@PathVariable Long counsellorId) {
 		System.out.println("in delete counsellor " + counsellorId);
 		return ResponseEntity.ok(adminService.deleteCounsellor(counsellorId));
 	}
 	
-	@PostMapping("/products")
+	@PostMapping("/addProducts")
 	public ResponseEntity<?> addNewProduct(@RequestBody @Valid ProductDTO productDTO) {
 		System.out.println("in add product " + productDTO);
 		return ResponseEntity
@@ -64,7 +81,7 @@ public class AdminController {
 				.body(productService.addNewProduct(productDTO));
 	}
 	
-	@PutMapping("/products/{productId}")
+	@PutMapping("/updateProducts/{productId}")
 	public ResponseEntity<?> updateProduct(@PathVariable Long productId,
 			@RequestBody @Valid ProductDTO productDTO) {
 		System.out.println("in update product " +productId+" "+ productDTO);		

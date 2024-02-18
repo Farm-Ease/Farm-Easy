@@ -29,7 +29,7 @@ public class FarmerDTO {
 	@JsonProperty(access = Access.WRITE_ONLY)
 	private String confirmPassword;
 	@NotBlank
-	private String adhaar;
+	private String aadhaar;
 	@NotBlank
 	private String village;
 	@NotBlank
@@ -40,5 +40,11 @@ public class FarmerDTO {
 	private String number;
 	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	private LocalDate dob;
+	@NotBlank
+	private String kharifCrop;
+	@NotBlank
+	private String rabiCrop;
+	@NotBlank
+	private String zaidCrop;
 	
 }

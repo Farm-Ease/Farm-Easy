@@ -17,8 +17,7 @@ import com.app.dto.Signup;
 
 public interface FarmerService {
 
-	FarmerAppointmentDTO addAppointment(FarmerAppointmentDTO apptDTO);
-
+	ApmcAppointmentDTO addAppointment(ApmcAppointmentDTO apptDTO);
 
 	ApiResponse deleteAppointment(Long appointmentId);
 
@@ -26,7 +25,7 @@ public interface FarmerService {
 
 	FarmerDTO updateFarmer(Long farmerId, @Valid FarmerDTO farmerDto);
 	
-	List <FarmerDTO> getFarmerByName(String farmerName);
+	//List <FarmerDTO> getFarmerByName(String farmerName);
 
 	FarmerDTO addNewFarmer(@Valid FarmerDTO farmerDto);
 

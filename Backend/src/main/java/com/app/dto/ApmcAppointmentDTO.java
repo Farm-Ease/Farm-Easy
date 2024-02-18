@@ -20,14 +20,15 @@ import lombok.ToString;
 @ToString
 public class ApmcAppointmentDTO {
 	@JsonProperty(access = Access.WRITE_ONLY)
-	private String farmerId;
-	@NotBlank
-	private String transaction;
+	private Long farmerId;
+//	@NotBlank
+//	private String transaction;
 	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	private LocalDate date;
 	@NotNull
 	private Double quantity;
-	
+	@NotBlank
+	private String crop;
 	
 	 
 	

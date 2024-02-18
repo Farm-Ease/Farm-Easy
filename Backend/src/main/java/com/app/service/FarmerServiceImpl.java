@@ -43,11 +43,20 @@ public class FarmerServiceImpl implements FarmerService{
 	private PasswordEncoder encoder;
 	
 	@Override
-	public FarmerAppointmentDTO addAppointment(FarmerAppointmentDTO farmerApptDTO) {
+	public ApmcAppointmentDTO addAppointment(ApmcAppointmentDTO apptDTO) {
 		// TODO Auto-generated method stub
-		ApmcAppointment apptEntity = mapper.map(farmerApptDTO, ApmcAppointment.class);
-		ApmcAppointment persistentAppt = appointmentDao.save(apptEntity);
-		return mapper.map(persistentAppt, FarmerAppointmentDTO.class);
+		Farmer farmer = farmerDao.findById(apptDTO.getFarmerId())
+				.orElseThrow(() -> new ResourceNotFoundException("Invalid farmer Id!!!"));
+		ApmcAppointment apptEntity = mapper.map(apptDTO, ApmcAppointment.class);
+		//System.out.println(farmerApptDTO.getFarmerId());
+		
+//		ApmcAppointment persistentAppt = appointmentDao.save(apptEntity);
+//		return mapper.map(persistentAppt, FarmerAppointmentDTO.class);
+		
+		farmer.addAppointment(apptEntity);
+		ApmcAppointment savedAppt = appointmentDao.save(apptEntity);
+		//System.out.println("emp entity id " + empEntity.getId() + " " + savedEmp.getId());
+		return mapper.map(savedAppt, ApmcAppointmentDTO.class);
 	}
 
 	
@@ -82,18 +91,20 @@ public class FarmerServiceImpl implements FarmerService{
 	
 	
 	
-	@Override
-	public List<FarmerDTO> getFarmerByName(String farmerName) {
-		List<Farmer> farmers = farmerDao.findAllByName(farmerName);
-		
-		if(!farmers.isEmpty()) {
-			return farmerDao.findAll()
-			.stream()
-			.map(farmer -> mapper.map(farmer, FarmerDTO.class))
-			.collect(Collectors.toList());
-		}
-		throw new ResourceNotFoundException("No such farmer Exists !");
-	}
+//	@Override
+//	public FarmerDTO getFarmerByName(String farmerName) {
+//		Farmer farmer = farmerDao.findByName(farmerName);
+//		
+////		if(!farmers.isEmpty()) {
+////			return farmerDao.findAll()
+////			.stream()
+////			.map(farmer -> mapper.map(farmer, FarmerDTO.class))
+////			.collect(Collectors.toList());
+////		}
+////		throw new ResourceNotFoundException("No such farmer Exists !");
+//		
+//		
+//	}
 
 
 	@Override

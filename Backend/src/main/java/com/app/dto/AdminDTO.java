@@ -13,9 +13,7 @@ public class AdminDTO {
 	@JsonProperty(access = Access.READ_ONLY)
 	private Long id;
 	@NotBlank
-	private String firstName;
-	@NotBlank
-	private String lastName;
+	private String name;
 	@Email
 	private String email;
 	@JsonProperty(access = Access.WRITE_ONLY)

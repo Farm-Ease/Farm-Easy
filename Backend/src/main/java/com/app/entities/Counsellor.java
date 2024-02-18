@@ -14,9 +14,7 @@ import lombok.Setter;
 public class Counsellor extends BaseEntity {
 
 	@Column(length = 30)
-	private String firstName;
-	@Column(length = 30)
-	private String lastName;
+	private String name;
 	@Column(length = 30, unique = true) // =>unique
 	private String email;
 	@Column(nullable = false)

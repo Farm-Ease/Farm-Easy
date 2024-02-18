@@ -20,7 +20,7 @@ import lombok.Setter;
 @AllArgsConstructor
 public class Crop extends BaseEntity {
 	@Column(name = "Crop_Name",length = 30,nullable = false)
-	private String cropNameString;
+	private String cropName;
 	
 	@Enumerated(EnumType.STRING)
 	@Column(name = "Crop_Season",length = 30,nullable = false)
@@ -29,7 +29,7 @@ public class Crop extends BaseEntity {
 	@Column(name = "Quantity",nullable = false)
 	private Long quantity;
 	
-	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "farmer_id")
-	private Farmer farmer;
+//	@ManyToOne(fetch = FetchType.LAZY)
+//	@JoinColumn(name = "farmer_id")
+//	private Farmer farmer;
 }

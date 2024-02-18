@@ -17,9 +17,7 @@ public class CounsellorDTO {
 	@JsonProperty(access = Access.READ_ONLY)
 	private Long id;
 	@NotBlank
-	private String firstName;
-	@NotBlank
-	private String lastName;
+	private String name;
 	@Email
 	private String email;
 	private long mobileNo;
