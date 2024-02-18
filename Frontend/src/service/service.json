@@ -1,0 +1,26 @@
+[
+    {
+        "id":1,
+        "imageLink":"https://cdn2.iconfinder.com/data/icons/free-version/128/recycling-256.png",
+        "heading":"Weather Forecasting",
+        "subheading":"Check Upcoming Weather"
+    },
+    {
+        "id":2,
+        "imageLink":"https://cdn0.iconfinder.com/data/icons/isometric-city-basic-transport/48/truck-front-01-256.png",
+        "heading":"APMC Appointment",
+        "subheading":"Book nearest APMC appointment at a click"
+    },
+    {
+        "id":3,
+        "imageLink":"https://cdn3.iconfinder.com/data/icons/network-and-communications-1-1/130/20-256.png",
+        "heading":"Government Scheme",
+        "subheading":"Know your schemes"
+    },
+    {
+        "id":4,
+        "imageLink":"https://cdn3.iconfinder.com/data/icons/network-and-communications-1-1/130/20-256.png",
+        "heading":"Expert Counselling",
+        "subheading":"Get your problem solved"
+    }
+]
