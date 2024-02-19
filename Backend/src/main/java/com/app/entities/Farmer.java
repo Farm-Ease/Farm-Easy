@@ -50,12 +50,12 @@ public class Farmer extends BaseEntity{
 	private String village;
 	//@Column(length = 300, nullable = false)
 	private String password;
-	@Column(length=30,nullable = false) // =>NOT NULL
-	private String kharifCrop;
-	@Column(length=30,nullable = false) // =>NOT NULL
-	private String rabiCrop;
-	@Column(length=30,nullable = false) // =>NOT NULL
-	private String zaidCrop;
+//	@Column(length=30,nullable = false) // =>NOT NULL
+//	private String kharifCrop;
+//	@Column(length=30,nullable = false) // =>NOT NULL
+//	private String rabiCrop;
+//	@Column(length=30,nullable = false) // =>NOT NULL
+//	private String zaidCrop;
 	
 	//One to many association betn farmer and crops  -- unidirectional
 //	@OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
@@ -64,7 +64,7 @@ public class Farmer extends BaseEntity{
 	
 	
 	//one to Many association betn Farmer <--> APMCAppointement -- bidirectional
-	@OneToMany(mappedBy = "farmer", cascade = CascadeType.ALL, orphanRemoval = true)
+	@OneToMany(mappedBy = "farmer" ,cascade = CascadeType.ALL, orphanRemoval = true)
 	private List<ApmcAppointment> appointmentList = new ArrayList<>();
 	
 	

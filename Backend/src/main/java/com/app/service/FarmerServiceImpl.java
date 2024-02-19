@@ -45,7 +45,7 @@ public class FarmerServiceImpl implements FarmerService{
 	@Override
 	public ApmcAppointmentDTO addAppointment(ApmcAppointmentDTO apptDTO) {
 		// TODO Auto-generated method stub
-		Farmer farmer = farmerDao.findById(apptDTO.getFarmerId())
+		Farmer farmer = farmerDao.findById(apptDTO.getFarmer_id())
 				.orElseThrow(() -> new ResourceNotFoundException("Invalid farmer Id!!!"));
 		ApmcAppointment apptEntity = mapper.map(apptDTO, ApmcAppointment.class);
 		//System.out.println(farmerApptDTO.getFarmerId());

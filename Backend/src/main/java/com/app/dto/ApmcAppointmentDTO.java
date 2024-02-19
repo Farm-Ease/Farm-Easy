@@ -19,8 +19,11 @@ import lombok.ToString;
 @Setter
 @ToString
 public class ApmcAppointmentDTO {
-	@JsonProperty(access = Access.WRITE_ONLY)
-	private Long farmerId;
+	@JsonProperty(access = Access.READ_ONLY)
+	private Long id;
+	@JsonProperty
+	//(access = Access.READ_WRITE)
+	private Long farmer_id;
 //	@NotBlank
 //	private String transaction;
 	@DateTimeFormat(pattern = "yyyy-MM-dd")

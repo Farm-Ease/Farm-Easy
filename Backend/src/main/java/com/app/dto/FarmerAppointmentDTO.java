@@ -22,7 +22,7 @@ import lombok.ToString;
 public class FarmerAppointmentDTO {
 
 //	@JsonProperty(access = Access.READ_ONLY)//deser
-	private Long farmerId;
+	private Long farmer_id;
 //	@JsonProperty(value = "district")
 //	private String district;
 //	@NotBlank

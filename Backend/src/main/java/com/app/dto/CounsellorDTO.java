@@ -27,6 +27,6 @@ public class CounsellorDTO {
 	private String district;
 	@NotBlank
 	private String village;
-	@JsonProperty(access = Access.WRITE_ONLY)
+	@JsonProperty(access = Access.READ_WRITE)
 	private String password;
 }

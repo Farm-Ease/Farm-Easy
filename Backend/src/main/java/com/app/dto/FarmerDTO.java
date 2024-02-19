@@ -18,13 +18,14 @@ import lombok.ToString;
 @Setter
 @ToString
 public class FarmerDTO {
-	@JsonProperty(access = Access.READ_ONLY)
+	//@JsonProperty(access = Access.READ_ONLY)
+	@JsonProperty
 	private Long id;
 	@NotBlank
 	private String name;
 	@NotBlank
 	private String email;
-	@JsonProperty(access = Access.WRITE_ONLY) //de-ser.
+	//@JsonProperty(access = Access.WRITE_ONLY) //de-ser.
 	private String password;
 	@JsonProperty(access = Access.WRITE_ONLY)
 	private String confirmPassword;
@@ -40,11 +41,11 @@ public class FarmerDTO {
 	private String number;
 	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	private LocalDate dob;
-	@NotBlank
-	private String kharifCrop;
-	@NotBlank
-	private String rabiCrop;
-	@NotBlank
-	private String zaidCrop;
+//	@NotBlank
+//	private String kharifCrop;
+//	@NotBlank
+//	private String rabiCrop;
+//	@NotBlank
+//	private String zaidCrop;
 	
 }

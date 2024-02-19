@@ -20,6 +20,8 @@ import ApmcPage from './pages/apmc/ApmcPage';
 import ApmcSellPage from './pages/apmc/ApmcSellPage';
 import Cart from './pages/cart/Cart'
 import FarmerManagement from './pages/adminDashboard/FarmerManagement';
+import AppointmentManagement from './pages/adminDashboard/AppointmentManagement';
+
 function App() {
   return (
   <div className='container-fluid'>
@@ -64,6 +66,16 @@ function App() {
           element={
             //<AdminRoutes>
               <FarmerManagement />
+            //</AdminRoutes>
+          }
+      >
+      </Route>
+
+      <Route
+        path='/adminDashboard/mngappointment'
+          element={
+            //<AdminRoutes>
+              <AppointmentManagement />
             //</AdminRoutes>
           }
       >

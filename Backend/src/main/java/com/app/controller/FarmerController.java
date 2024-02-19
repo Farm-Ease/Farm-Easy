@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -26,6 +27,7 @@ import com.app.service.FarmerService;
 @RestController
 @RequestMapping("/farmer")
 @Validated
+@CrossOrigin
 public class FarmerController {
 	
 	@Autowired
@@ -62,7 +64,6 @@ public class FarmerController {
 		System.out.println("In update appt "+appointmentId+" "+ apptDto);
 		return ResponseEntity.ok(farmerService.updateAppoitnment(appointmentId,apptDto));
 	}
-	
 	
 	@DeleteMapping("/deleteFarmer/{appointmentId}")
 	public ResponseEntity<?> deleteAppointment(@PathVariable Long appointmentId) {

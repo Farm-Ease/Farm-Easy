@@ -29,7 +29,8 @@ import com.app.entities.*;
 @AllArgsConstructor
 @Getter
 @Setter
-@ToString(exclude = {"farmer"}, callSuper = true)
+//@ToString(exclude = {"farmer"}, callSuper = true)
+@ToString
 public class ApmcAppointment extends BaseEntity {
 	
 //	@Enumerated(EnumType.STRING)

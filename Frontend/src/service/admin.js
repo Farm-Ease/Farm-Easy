@@ -15,15 +15,15 @@ export async function signinAdmin(email, password) {
   }
 }
 
-export async function  AddCounsellor(name, email, mobileNo, stateName, districtName, village, password){
+export async function  AddCounsellor(name, email, mobileNo, state, district, village, password){
   try {
-    const url = createUrl('admin/AddCounsellor')
+    const url = createUrl('admin/addCounsellor')
     const body = {
       name,
       email,
       mobileNo, 
-      stateName, 
-      districtName, 
+      state, 
+      district, 
       village, 
       password,
     }
@@ -34,6 +34,16 @@ export async function  AddCounsellor(name, email, mobileNo, stateName, districtN
   }
 }
 
+export async function getAllCounsellor(){
+  try{
+    const url =createUrl('admin/getCounsellors')
+    const response = await axios.get(url)
+    return response.data
+  }
+  catch(ex){
+    return createError(ex)
+  }
+  }
 
 export async function  deleteCounsellor(Id){
   try {
@@ -43,15 +53,4 @@ export async function  deleteCounsellor(Id){
   } catch (ex) {
     return createError(ex)
   }
-}
-
-export async function getAllCounsellor(){
-try{
-  const url =createUrl('/admin/AllCounsellor')
-  const response = await axios.get(url)
-  return response.data
-}
-catch(ex){
-  return createError(ex)
-}
 }
