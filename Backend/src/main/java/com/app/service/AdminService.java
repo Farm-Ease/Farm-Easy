@@ -8,6 +8,7 @@ import com.app.dto.ApiResponse;
 import com.app.dto.ApmcAppointmentDTO;
 import com.app.dto.CounsellorDTO;
 import com.app.dto.FarmerDTO;
+import com.app.entities.Product;
 
 public interface AdminService {
 	List<CounsellorDTO> getAllCounsellor();
@@ -21,4 +22,6 @@ public interface AdminService {
 	ApiResponse deleteCounsellor(Long counsellorId);
 	
 	List<FarmerDTO> getAllFarmers();
+
+	List<Product> getAllProducts();
 }

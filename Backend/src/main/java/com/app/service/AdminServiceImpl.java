@@ -15,6 +15,7 @@ import com.app.dao.AdminDao;
 import com.app.dao.ApmcAppointmentDao;
 import com.app.dao.CounsellorDao;
 import com.app.dao.FarmerDao;
+import com.app.dao.ProductDao;
 import com.app.dto.AdminDTO;
 import com.app.dto.ApiResponse;
 import com.app.dto.ApmcAppointmentDTO;
@@ -22,6 +23,7 @@ import com.app.dto.CounsellorDTO;
 import com.app.dto.FarmerDTO;
 import com.app.entities.Admin;
 import com.app.entities.Counsellor;
+import com.app.entities.Product;
 
 @Service
 @Transactional
@@ -37,6 +39,9 @@ public class AdminServiceImpl implements AdminService{
 	
 	@Autowired
 	private FarmerDao farmerDao;
+	
+	@Autowired
+	private ProductDao productDao;
 	
 	@Autowired
 	private ApmcAppointmentDao apmcAppointmentDao;
@@ -66,7 +71,6 @@ public class AdminServiceImpl implements AdminService{
 	
 	@Override
 	public List<FarmerDTO> getAllFarmers() {
-		
 		return farmerDao.findAll()
 				.stream()
 				.map(farm -> mapper.map(farm, FarmerDTO.class))
@@ -85,6 +89,14 @@ public class AdminServiceImpl implements AdminService{
 		return apmcAppointmentDao.findAll()
 				.stream()
 				.map(apmcAppointment -> mapper.map(apmcAppointment, ApmcAppointmentDTO.class))
+				.collect(Collectors.toList());
+	}
+
+	@Override
+	public List<Product> getAllProducts() {
+		return productDao.findAll()
+				.stream()
+				.map(product -> mapper.map(product, Product.class))
 				.collect(Collectors.toList());
 	}
 }

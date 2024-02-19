@@ -25,6 +25,9 @@ public class Product extends BaseEntity {
 	@Column(name = "Product_Name",length = 20,nullable = false)
 	private String productName;
 	
+	@Column(length = 20)
+	private String image;
+	
 	@Column(nullable = false)
 	private Double quantity;
 	

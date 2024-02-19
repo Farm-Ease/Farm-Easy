@@ -64,7 +64,7 @@ public class Farmer extends BaseEntity{
 	
 	
 	//one to Many association betn Farmer <--> APMCAppointement -- bidirectional
-	@OneToMany(mappedBy = "farmer" ,cascade = CascadeType.ALL, orphanRemoval = true)
+	@OneToMany(mappedBy = "farmer" ,cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.EAGER)
 	private List<ApmcAppointment> appointmentList = new ArrayList<>();
 	
 	

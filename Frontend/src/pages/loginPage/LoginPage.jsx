@@ -16,28 +16,29 @@ function LoginForm() {
       toast.warn('enter email')
     } else if (password.length == 0) {
       toast.warn('enter password')
-    } else {
+    } 
       // make the api call
       const result = await signinUser(email, password)
+      console.log(result['status']);
       if (result['status'] == 'success') {
         // cache the token
         const token = result['data']['token']
         sessionStorage['token'] = token
-
+        console.log(token);
         toast.success('Welcome to the "Farm-Easy"')
 
         navigate('/')
       } else {
         toast.error(result['error'])
       }
-    }
+    
   }
   return (
     <div className="loginForm">
 		<div className="header-text">
 			Login Form
 		</div>
-    <form method='POST'>
+    <form >
             <input onChange={(event)=>{
               setEmail(event.target.value);
             }} placeholder="Your Email Address" type="email" required /> 
