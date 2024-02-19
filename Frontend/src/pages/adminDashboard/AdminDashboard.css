@@ -13,6 +13,7 @@ body {
  */
 
 .sidebar {
+  width: 250px;
   position: fixed;
   top: 100;
   bottom: 0;
@@ -91,3 +92,8 @@ body {
 
 .border-top { border-top: 1px solid #e5e5e5; }
 .border-bottom { border-bottom: 1px solid #e5e5e5; }
+
+main {
+  margin-left: 250px; /* Adjust to match sidebar width */
+  padding-top: 20px; /* Adjust to match any top padding in sidebar */
+}

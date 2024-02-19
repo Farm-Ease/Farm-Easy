@@ -28,7 +28,7 @@ function AdminDashboard() {
                 </a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="/adminCounsellor">
+                <a class="nav-link" href="/adminDashboard/mngcounsellor">
                   <span data-feather="shopping-cart"></span>
                   Counsellor
                 </a>

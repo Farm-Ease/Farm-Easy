@@ -19,7 +19,7 @@ import ApmcBuy from './pages/apmc/ApmcBuyPage';
 import ApmcPage from './pages/apmc/ApmcPage';
 import ApmcSellPage from './pages/apmc/ApmcSellPage';
 import Cart from './pages/cart/Cart'
-
+import FarmerManagement from './pages/adminDashboard/FarmerManagement';
 function App() {
   return (
   <div className='container-fluid'>
@@ -58,7 +58,16 @@ function App() {
           }
       >
       </Route>
-
+      
+      <Route
+        path='/adminDashboard/mngfarmer'
+          element={
+            //<AdminRoutes>
+              <FarmerManagement />
+            //</AdminRoutes>
+          }
+      >
+      </Route>
     </Routes>
 
     <ToastContainer />
