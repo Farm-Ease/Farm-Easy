@@ -29,4 +29,6 @@ public interface FarmerService {
 
 	Signup userRegistration(@Valid Signup dto);
 
+	List<ApmcAppointmentDTO> getAppointmentByFarmerId(Long farmerId);
+
 }

@@ -36,6 +36,7 @@ public class FarmerController {
 	@Autowired
 	private CounsellorService counsellorService;
 	
+	
 	@PostMapping("/AddFarmer")
 	public ResponseEntity<?> addNewFarmer(@RequestBody @Valid FarmerDTO farmerDto) {
 		System.out.println("in add farmer " + farmerDto);
@@ -73,6 +74,10 @@ public class FarmerController {
 	@GetMapping("/getCounsellor/{district}")
 	public ResponseEntity<?> getCounsellorByDistrict(@PathVariable String district){
 		return ResponseEntity.ok(counsellorService.getCounsellorByDistrict(district));
-
-}
+	}
+		
+	@GetMapping("/getAppointment/{farmerId}")
+	public ResponseEntity<?> getAppointmentByFarmerId(@PathVariable Long farmerId){
+		return ResponseEntity.ok(farmerService.getAppointmentByFarmerId(farmerId));
+	}
 }

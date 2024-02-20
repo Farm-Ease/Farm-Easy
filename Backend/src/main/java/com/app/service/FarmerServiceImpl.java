@@ -1,5 +1,6 @@
 package com.app.service;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
@@ -70,6 +71,8 @@ public class FarmerServiceImpl implements FarmerService{
 		ApmcAppointment appt = appointmentDao.findById(appointmentId).orElseThrow(()->new ResourceNotFoundException("Invalid appt id"));
 		appt.setDate(apptDto.getDate());
 		appt.setQuantity(apptDto.getQuantity());
+		appt.setCrop(apptDto.getCrop());
+//		System.out.println(appt.getFarmer());
 		return mapper.map(appt, ApmcAppointmentDTO.class);
 	}
 
@@ -113,6 +116,21 @@ public class FarmerServiceImpl implements FarmerService{
 		farmer.setPassword(encoder.encode(farmer.getPassword()));//pwd : encrypted using SHA
 		Farmer persistFarmer = farmerDao.save(farmer);
 		return mapper.map(persistFarmer, Signup.class);
+	}
+
+
+	@Override
+	public List<ApmcAppointmentDTO> getAppointmentByFarmerId(Long farmerId) {
+		Farmer farmer = farmerDao.findById(farmerId)
+				.orElseThrow(() -> new ResourceNotFoundException("Invalid farmer Id!!!"));
+		List<ApmcAppointment> apmcAppointments = appointmentDao.findByFarmer(farmer);
+		List<ApmcAppointmentDTO> result = new ArrayList<ApmcAppointmentDTO>();
+		for(ApmcAppointment apmcApp : apmcAppointments) {
+			ApmcAppointmentDTO apmcdto = mapper.map(apmcApp, ApmcAppointmentDTO.class);
+			apmcdto.setFarmer_id(apmcApp.getFarmer().getId());
+			result.add(apmcdto);
+		}
+		return result;
 	}
 
 	

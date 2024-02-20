@@ -22,6 +22,7 @@ import Cart from './pages/cart/Cart'
 import FarmerManagement from './pages/adminDashboard/FarmerManagement';
 import AppointmentManagement from './pages/adminDashboard/AppointmentManagement';
 import CounsellorProfile from './pages/counsellorDashboard/CounsellorProfile';
+import ApmcAppointmentManagement from './pages/farmerDashboard/ApmcAppointmentMangement';
 
 function App() {
   return (
@@ -81,9 +82,20 @@ function App() {
           }
       >
       </Route>
+
+      <Route
+      path='/farmerDashboard/manageFarmerApmcAppointment'
+      element ={
+        <ApmcAppointmentManagement/>
+      }
+    >
+
+    </Route>
       {/* <Route path = '/counsellorDashboard/profile'
       element = {<CounsellorProfile/>}/> */}
     </Routes>
+
+    
 
     <ToastContainer />
   </div>
