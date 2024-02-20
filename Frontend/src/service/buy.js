@@ -3,7 +3,7 @@ import { createError, createUrl } from './utils'
 
 export async function getAllProducts() {
   try {
-    const url = createUrl('products/')
+    const url = createUrl('admin/getProducts')
     const headers = {
       headers: {
         token: sessionStorage['token'],

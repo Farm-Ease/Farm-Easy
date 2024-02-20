@@ -36,7 +36,7 @@ public class FarmerController {
 	@Autowired
 	private CounsellorService counsellorService;
 	
-	@PostMapping("/farmer")
+	@PostMapping("/AddFarmer")
 	public ResponseEntity<?> addNewFarmer(@RequestBody @Valid FarmerDTO farmerDto) {
 		System.out.println("in add farmer " + farmerDto);
 		return ResponseEntity
@@ -65,7 +65,7 @@ public class FarmerController {
 		return ResponseEntity.ok(farmerService.updateAppoitnment(appointmentId,apptDto));
 	}
 	
-	@DeleteMapping("/deleteFarmer/{appointmentId}")
+	@DeleteMapping("/deleteAppointment/{appointmentId}")
 	public ResponseEntity<?> deleteAppointment(@PathVariable Long appointmentId) {
 		System.out.println("in delete counsellor " + appointmentId);
 		return ResponseEntity.ok(farmerService.deleteAppointment(appointmentId));

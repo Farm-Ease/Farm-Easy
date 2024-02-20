@@ -30,7 +30,7 @@ public class Signup {
 	@JsonProperty(access = Access.WRITE_ONLY)
 	private String confirmPassword;
 	@NotBlank
-	private String adhaar;
+	private String aadhaar;
 	@NotBlank
 	private String village;
 	@NotBlank

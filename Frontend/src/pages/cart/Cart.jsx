@@ -5,6 +5,7 @@ import Navbar from '../../Components/navbar/Navbar1'
 import config from '../../config'
 import { clear, updateQuantity } from '../../features/cartSlice'
 import { placeOrder } from '../../service/order'
+import img from '../../assets/flax.jpg'
 
 export function Cart() {
   const [total, setTotal] = useState(0)
@@ -17,7 +18,7 @@ export function Cart() {
   useEffect(() => {
     let totalAmount = 0
     for (const item of cart.items) {
-      totalAmount += item['price'] * item['quantity']
+      totalAmount += item['rate'] * item['quantity']
     }
     setTotal(totalAmount)
   }, [cart.items])
@@ -56,7 +57,7 @@ export function Cart() {
                   <th>No</th>
                   <th>Image</th>
                   <th>Name</th>
-                  <th>Price</th>
+                  <th>rate</th>
                   <th>Quantity</th>
                   <th>Total</th>
                   <th>Action</th>
@@ -70,14 +71,15 @@ export function Cart() {
                       <td>
                         <img
                           style={{ width: 50 }}
-                          src={config.server + '/' + item['image']}
+                          //src={config.server + '/' + item['image']}
+                          src={img}
                           alt=''
                         />
                       </td>
-                      <td>{item['name']}</td>
-                      <td>{item['price']}</td>
+                      <td>{item['productName']}</td>
+                      <td>{item['rate']}</td>
                       <td>{item['quantity']}</td>
-                      <td>{item['price'] * item['quantity']}</td>
+                      <td>{item['rate'] * item['quantity']}</td>
                       <td>
                         <button
                           onClick={() => {

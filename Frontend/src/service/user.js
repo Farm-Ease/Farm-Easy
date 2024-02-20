@@ -1,17 +1,17 @@
 import axios from 'axios'
 import { createError, createUrl } from './utils'
 
-export async function RegisterUser(name, email, number, aadhar, dob, stateName, districtName, village, password) {
+export async function RegisterUser(name, email, number, aadhaar, dob, state, district, village, password) {
   try {
-    const url = createUrl('user/register')
+    const url = createUrl('farmers/signup')
     const body = {
       name, 
       email, 
       number, 
-      aadhar, 
+      aadhaar, 
       dob, 
-      stateName, 
-      districtName, 
+      state, 
+      district, 
       village, 
       password,
     }
@@ -24,7 +24,7 @@ export async function RegisterUser(name, email, number, aadhar, dob, stateName, 
 
 export async function signinUser(email, password) {
   try {
-    const url = createUrl('user/login')
+    const url = createUrl('farmers/signin')
     const body = {
       email,
       password,

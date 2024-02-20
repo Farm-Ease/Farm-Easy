@@ -47,6 +47,13 @@ public class AdminController {
 				.ok(adminService.getAllFarmers());
 	}
 	
+	@GetMapping("/getProducts")
+	public ResponseEntity<?> getAllProducts() {
+		System.out.println("in get all products" );
+		return ResponseEntity
+				.ok(adminService.getAllProducts());
+	}
+	
 	@GetMapping("/getAppointments")
 	public ResponseEntity<?> getAllAppointment() {
 		System.out.println("in get all appointment" );

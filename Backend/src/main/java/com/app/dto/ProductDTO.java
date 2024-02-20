@@ -24,6 +24,9 @@ public class ProductDTO {
 	private Double rate;
 	
 	@NotNull
+	private String image;
+	
+	@NotNull
 	private Double quantity;
 
 }

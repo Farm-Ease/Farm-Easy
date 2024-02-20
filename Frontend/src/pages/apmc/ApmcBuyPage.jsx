@@ -5,16 +5,21 @@ import Navbar from '../../Components/navbar/Navbar1'
 import config from '../../config'
 import { addItem } from '../../features/cartSlice'
 import { getAllProducts } from '../../service/buy'
+import img from '../../assets/flax.jpg'
 
 function Product({ item }) {
+  console.log(item.productName);
   // get the dispatch object
   const dispatch = useDispatch()
-
   const getTitle = () => {
-    return item.name.length > 13
-      ? item.name.substring(0, 12) + '...'
-      : item.name
+  if (item && item.productName) {
+    return item.productName.length > 13
+      ? item.productName.substring(0, 12) + '...'
+      : item.productName;
+  } else {
+    return '';
   }
+};
 
   const addItemToCart = () => {
     dispatch(addItem({ ...item, quantity: 1 }))
@@ -26,7 +31,9 @@ function Product({ item }) {
         <img
           style={{ width: 150 }}
           className='card-img-top'
-          src={config.server + '/' + item.image}
+          //static routing
+          //src={config.server + '/' + item.image}
+          src={img}
           alt=''
         />
       </div>
@@ -35,7 +42,7 @@ function Product({ item }) {
         <div>
           Price:{' '}
           <span style={{ fontWeight: 'bold', fontSize: 17 }}>
-            ₹{item.price}
+            ₹{item.rate}
           </span>
         </div>
         <div className='mt-2'>
@@ -52,13 +59,24 @@ export function ApmcBuy() {
   const [items, setItems] = useState([])
 
   const loadAllProducts = async () => {
-    const result = await getAllProducts()
-    if (result['status'] == 'success') {
-      console.log(result)
-      setItems(result['data'])
-    } else {
-      toast.error(result['error'])
-    }
+    // const result = await getAllProducts()
+    // console.log(result)
+    // if (result['status'] == 'success') {
+    //   console.log(result)
+    //   setItems(result['data'])
+    // } else {
+    //   toast.error(result['error'])
+    // }
+    try {
+            const response = await fetch('http://localhost:8080/admin/getProducts');
+            const data = await response.json();
+            setItems(data);
+            console.log(items);
+        } catch (error) {
+            console.error('Error fetching products:', error);
+            // Handle error
+            toast.error('Failed to fetch products. Please try again later.');
+        }
   }
 
   useEffect(() => {
