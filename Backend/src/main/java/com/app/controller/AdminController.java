@@ -81,7 +81,7 @@ public class AdminController {
 		System.out.println("in delete counsellor " + counsellorId);
 		return ResponseEntity.ok(adminService.deleteCounsellor(counsellorId));
 	}
-	
+	@CrossOrigin
 	@PostMapping("/addProducts")
 	public ResponseEntity<?> addNewProduct(@RequestBody @Valid ProductDTO productDTO) {
 		System.out.println("in add product " + productDTO);
@@ -96,5 +96,10 @@ public class AdminController {
 		System.out.println("in update product " +productId+" "+ productDTO);		
 		return ResponseEntity.
 				ok(productService.updateProduct(productId, productDTO));
+	}
+	@DeleteMapping("/deleteProduct/{productId}")
+	public ResponseEntity<?> deleteProduct(@PathVariable Long productId) {
+		System.out.println("in delete counsellor " + productId);
+		return ResponseEntity.ok(adminService.deleteProduct(productId));
 	}
 }

@@ -24,4 +24,6 @@ public interface AdminService {
 	List<FarmerDTO> getAllFarmers();
 
 	List<Product> getAllProducts();
+
+	ApiResponse deleteProduct(Long productId);
 }

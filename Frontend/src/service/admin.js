@@ -54,3 +54,22 @@ export async function  deleteCounsellor(Id){
     return createError(ex)
   }
 }
+
+
+export async function AddProduct(productName, quantity, rate) {
+  try {
+    const url = 'http://localhost:8080/admin/getProducts';
+    const body = {
+      productName,
+      quantity,
+      rate,
+    };
+    const response = await axios.post(url, body);
+    console.log(response)
+    return response.data;
+  } catch (error) {
+    // Handle errors
+    console.error('Error adding product:', error);
+    throw new Error('Failed to add product');
+  }
+}

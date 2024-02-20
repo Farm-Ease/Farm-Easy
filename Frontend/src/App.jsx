@@ -98,13 +98,23 @@ function App() {
       path='/farmerDashboard/manageFarmerApmcAppointment'
       element ={
         <ApmcAppointmentManagement/>
-      }
-    >
-
+      }>
     </Route>
+
+    
+    <Route
+        path='/adminDashboard/mngproduct'
+          element={
+            //<AdminRoutes>
+              <ProductManagement />
+            //</AdminRoutes>
+          }
+      >
+      </Route>
       {/* <Route path = '/counsellorDashboard/profile'
       element = {<CounsellorProfile/>}/> */}
     </Routes>
+
 
     
 
