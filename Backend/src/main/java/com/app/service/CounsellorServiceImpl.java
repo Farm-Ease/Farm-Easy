@@ -20,7 +20,6 @@ public class CounsellorServiceImpl implements CounsellorService {
 	@Autowired
 	private CounsellorDao counsellorDao;
 	
-	
 	@Override
 	public CounsellorDTO updateCounsellor(Long id, CounsellorDTO counsellorDTO) {
 		Counsellor counsellor = counsellorDao.findById(id).orElseThrow(()->new ResourceNotFoundException("Invalid Counsellor Id"));
@@ -29,15 +28,12 @@ public class CounsellorServiceImpl implements CounsellorService {
 		return counsellorDTO;
 	}
 
-
 	@Override
 	public CounsellorDTO getCounsellorByDistrict(String district) {
 		return mapper.map(
 				counsellorDao.findByDistrict(district).orElseThrow(() -> new ResourceNotFoundException("Invalid District name!!!!")),
 				CounsellorDTO.class);
-		
 	}
-
 
 	@Override
 	public CounsellorDTO getCounsellor(Long id) {
@@ -47,7 +43,4 @@ public class CounsellorServiceImpl implements CounsellorService {
 		counsellorDTO.setId(id);
 		return counsellorDTO;
 	}
-	
-	
-
 }

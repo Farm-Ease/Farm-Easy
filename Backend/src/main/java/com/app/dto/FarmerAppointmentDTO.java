@@ -33,6 +33,5 @@ public class FarmerAppointmentDTO {
 	private Long cropId;
 	@Column(nullable = false)
 	private String transaction;
-	//private List<ApmcAppointment> appointmentList; 
 	
 }

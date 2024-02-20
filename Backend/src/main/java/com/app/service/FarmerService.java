@@ -13,8 +13,6 @@ import com.app.dto.FarmerAppointmentDTO;
 import com.app.dto.FarmerDTO;
 import com.app.dto.Signup;
 
-
-
 public interface FarmerService {
 
 	ApmcAppointmentDTO addAppointment(ApmcAppointmentDTO apptDTO);
@@ -28,7 +26,6 @@ public interface FarmerService {
 	List <FarmerDTO> getFarmerByName(String farmerName);
 
 	FarmerDTO addNewFarmer(@Valid FarmerDTO farmerDto);
-
 
 	Signup userRegistration(@Valid Signup dto);
 
