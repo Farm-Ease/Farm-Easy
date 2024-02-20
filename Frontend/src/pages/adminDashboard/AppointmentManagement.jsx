@@ -16,7 +16,6 @@ function AppointmentManagement() {
 
     const fetchAppointments = async () => {
         try {
-          debugger
             const response = await fetch('http://localhost:8080/admin/getAppointments');
             const data = await response.json();
             setAppointments(data);
