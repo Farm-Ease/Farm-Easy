@@ -1,6 +1,7 @@
 package com.app.service;
 
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 import org.aspectj.weaver.NewConstructorTypeMunger;
@@ -91,20 +92,21 @@ public class FarmerServiceImpl implements FarmerService{
 	
 	
 	
-//	@Override
-//	public FarmerDTO getFarmerByName(String farmerName) {
-//		Farmer farmer = farmerDao.findByName(farmerName);
-//		
-////		if(!farmers.isEmpty()) {
-////			return farmerDao.findAll()
-////			.stream()
-////			.map(farmer -> mapper.map(farmer, FarmerDTO.class))
-////			.collect(Collectors.toList());
-////		}
-////		throw new ResourceNotFoundException("No such farmer Exists !");
-//		
-//		
-//	}
+	@Override
+	public List<FarmerDTO> getFarmerByName(String farmerName) {
+		List<Farmer> farmers = farmerDao.findAllByName(farmerName);
+		
+		if(!farmers.isEmpty()) {
+			return farmers
+			.stream()
+			.map(farmer -> mapper.map(farmer, FarmerDTO.class))
+			.collect(Collectors.toList());
+		}
+		
+		throw new ResourceNotFoundException("No such farmer Exists !");
+		
+		
+	}
 
 
 	@Override

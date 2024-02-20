@@ -6,7 +6,22 @@ body {
     width: 16px;
     height: 16px;
     vertical-align: text-bottom;
+
 }
+.custom-table tbody {
+    border: none;
+  }
+.name{
+    text-align: center;
+    width: 200px;
+    font-size: larger;
+    font-weight: bold;
+}
+
+.button{
+    padding-left: 10%;
+}
+
 
 /*
  * Sidebar
@@ -29,7 +44,7 @@ body {
     top: 48px;
     /* Height of navbar */
     height: calc(100vh - 48px);
-    padding-top: .5rem;
+    padding-top: 6.5rem;
     overflow-x: hidden;
     overflow-y: auto;
     /* Scrollable contents if viewport is shorter than content. */
@@ -99,3 +114,8 @@ body {
 .border-bottom {
     border-bottom: 1px solid #e5e5e5;
 }
+.btn-right-top {
+    position: fixed;
+    top: 20px; /* Adjust as needed */
+    right: 100px; /* Adjust as needed */
+  }

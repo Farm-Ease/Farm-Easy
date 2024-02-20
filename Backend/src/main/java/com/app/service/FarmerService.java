@@ -25,7 +25,7 @@ public interface FarmerService {
 
 	FarmerDTO updateFarmer(Long farmerId, @Valid FarmerDTO farmerDto);
 	
-	//List <FarmerDTO> getFarmerByName(String farmerName);
+	List <FarmerDTO> getFarmerByName(String farmerName);
 
 	FarmerDTO addNewFarmer(@Valid FarmerDTO farmerDto);
 
