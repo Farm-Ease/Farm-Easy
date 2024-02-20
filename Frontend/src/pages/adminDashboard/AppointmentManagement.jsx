@@ -88,7 +88,7 @@ function AppointmentManagement() {
                       {appointments.map(appointments => (
                             <tr key={appointments.id}>
                             <td>{appointments.id}</td>
-                            <td>{appointments.farmerId}</td>
+                            <td>{appointments.farmer_id}</td>
                             <td>{appointments.date}</td>
                             <td>{appointments.crop}</td>
                             <td>{appointments.quantity}</td>

@@ -44,7 +44,7 @@ public class FarmerController {
 				.body(farmerService.addNewFarmer(farmerDto));
 	}
 	
-	@PutMapping("/UpdateFarmer/{farmerId}")//update farmer
+	@PutMapping("/UpdateFarmer/{farmerId}")
 	public ResponseEntity<?> updateFarmer(@PathVariable Long farmerId, @RequestBody @Valid FarmerDTO farmerDto){
 		System.out.println("In update farmer "+farmerId+" "+farmerDto);
 		return ResponseEntity.ok(farmerService.updateFarmer(farmerId,farmerDto));
@@ -56,7 +56,6 @@ public class FarmerController {
 		return ResponseEntity
 				.status(HttpStatus.CREATED)
 				.body(farmerService.addAppointment(apptDTO));
-				
 	}
 	
 	@PutMapping("/updateAppointment/{appointmentId}")
