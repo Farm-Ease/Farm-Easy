@@ -22,7 +22,8 @@ import Cart from './pages/cart/Cart'
 import FarmerManagement from './pages/adminDashboard/FarmerManagement';
 import AppointmentManagement from './pages/adminDashboard/AppointmentManagement';
 import CounsellorProfile from './pages/counsellorDashboard/CounsellorProfile';
-
+import { FormDataProvider } from './FormDataContext/FormDataContext';
+import Receipt from './pages/receipt/receipt';
 function App() {
   return (
   <div className='container-fluid'>
@@ -33,7 +34,9 @@ function App() {
       <Route path="/adminLogin" element={<AdminLoginForm/>}></Route>
       <Route path="/counsellorLogin" element={<CounsellorLoginForm/>}></Route>
       <Route path="/apmc" element={<ApmcPage/>}></Route>
-      <Route path="/apmcSell" element={<ApmcSellPage/>}></Route>
+      {/* <Route path="/apmcSell" element={<ApmcSellPage/>}></Route> */}
+      <Route path="/apmcSell" element={ <FormDataProvider><ApmcSellPage/></FormDataProvider>}></Route>
+      <Route path="/receipt" element={<FormDataProvider><Receipt/></FormDataProvider>}></Route>
       <Route path="/apmcBuy" element={<ApmcBuy/>}></Route>
       <Route path="/weather" element={<WeatherPage/>}></Route>
       <Route path="/counselling" element={<CounsellingPage/>}></Route>
@@ -81,8 +84,8 @@ function App() {
           }
       >
       </Route>
-      {/* <Route path = '/counsellorDashboard/profile'
-      element = {<CounsellorProfile/>}/> */}
+      <Route path = '/counsellorDashboard/profile'
+      element = {<CounsellorProfile/>}/>
     </Routes>
 
     <ToastContainer />

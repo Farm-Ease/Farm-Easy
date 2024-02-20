@@ -41,11 +41,8 @@ public class CounsellorServiceImpl implements CounsellorService {
 
 	@Override
 	public CounsellorDTO getCounsellor(Long id) {
-		Counsellor counsellor = counsellorDao.findById(id).orElseThrow(()->new ResourceNotFoundException("Invalid Counsellor Id"));
-		CounsellorDTO counsellorDTO = new CounsellorDTO();
-		mapper.map(counsellorDTO, counsellor);
-		counsellorDTO.setId(id);
-		return counsellorDTO;
+		return mapper.map(counsellorDao.findById(id).orElseThrow(()->new ResourceNotFoundException("Invalid Counsellor Id")),
+				CounsellorDTO.class);
 	}
 	
 	

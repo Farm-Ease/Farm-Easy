@@ -4,7 +4,7 @@ import axios from 'axios';
 import Navbar from '../../Components/navbar/Navbar1'
 import { toast } from 'react-toastify';
 import CounsellorProfile from './CounsellorProfile';
-import { Sync } from '@mui/icons-material';
+
 
 function CounsellorDashboard() {
   const [farmerName, setFarmerName] = useState('');
@@ -31,6 +31,29 @@ function CounsellorDashboard() {
     }
   };
 
+  // const [counsellor, setCounsellor] = useState(null);
+  // const[clicked,setClicked]=useState(false);
+
+  //   const fetchCounsellor = async () => {
+  //     setClicked(true);
+  //       try {
+  //           // setId(3);
+  //           const response = await axios.get(`http://localhost:8080/counsellor/3`);
+  //           console.log(response);
+  //           const counsellorData = response.data;
+  //           console.log(counsellorData);
+  //           console.log(response.status);
+  //           if (response.status === 200)  {
+  //               setCounsellor(counsellorData);
+  //               console.log(counsellor);
+  //           }
+  //       } catch (error) {
+  //           console.error('Error fetching counsellors:', error);
+  //           toast.error('Failed to fetch counsellors. Please try again later.');
+        
+  //       }
+  //   };
+
   return (
     <>
       <Navbar />
@@ -51,7 +74,7 @@ function CounsellorDashboard() {
                     Products
                   </a>
                 </li>
-                <a class="nav-link" href="/counsellorDashboard/profile">
+                <a class="nav-link"  href ="/counsellorDashboard/profile">
                   <span data-feather="bar-chart-2"></span>
                   Update Profile
                 </a>
@@ -63,7 +86,6 @@ function CounsellorDashboard() {
             <div className='container'>
               <center><h1>Welcome to dashboard!</h1></center>
               <hr></hr>
-
               <div class='table-responsive'>
                 <table class="custom-table ">
                   <tbody>
@@ -84,6 +106,29 @@ function CounsellorDashboard() {
                   </tbody>
                 </table>
               </div>
+              {/* {
+                clicked ? (<CounsellorProfile data={counsellor}/>):(
+                <div class='table-responsive'>
+                <table class="custom-table ">
+                  <tbody>
+                    <tr>
+                      <td class='name'>Name</td>
+                      <td class='inputBox'>
+                        <input type='text'
+                          class='form-control'
+                          placeholder="Enter Name here"
+                          value={farmerName}
+                          name='Name'
+                          onChange={(event) => setFarmerName(event.target.value)} />
+                      </td>
+                      <td class='button'>
+                        <button className='btn btn-primary' onClick={fetchFarmer}>Search</button>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>)
+              } */}
               <hr></hr>
               {isPresent &&
                 <div class='table-responsive'>
