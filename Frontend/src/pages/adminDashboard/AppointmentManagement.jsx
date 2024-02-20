@@ -16,7 +16,6 @@ function AppointmentManagement() {
 
     const fetchAppointments = async () => {
         try {
-          debugger
             const response = await fetch('http://localhost:8080/admin/getAppointments');
             const data = await response.json();
             setAppointments(data);
@@ -75,7 +74,7 @@ function AppointmentManagement() {
               <center><h1>Welcome to dashboard!</h1></center>
               <hr></hr>
               <div class='table-responsive'>
-                <table class='table table-bordered'>
+                <table class='table table-striped'>
                   <thead>
                     <tr>
                       <th>Id</th>
@@ -93,21 +92,6 @@ function AppointmentManagement() {
                             <td>{appointments.date}</td>
                             <td>{appointments.crop}</td>
                             <td>{appointments.quantity}</td>
-                            
-                            {/* <td>
-                                <button className='btn btn-warning'
-                                    // onClick={() => { EditRecord(counsellor) }}
-                                >
-                                    Edit
-                                </button>
-                            </td>
-                            <td>
-                                <button className='btn btn-danger'
-                                    // onClick={() => { RemoveRecord(counsellor.Id) }}
-                                >
-                                    Delete
-                                </button>
-                            </td> */}
                         </tr>
                     ))}
                   </tbody>

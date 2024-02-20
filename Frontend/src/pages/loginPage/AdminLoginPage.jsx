@@ -1,11 +1,10 @@
-import React, { useState } from 'react'
-import './AdminLoginForm.css'
+import './LoginForm.css'
+import { useState } from 'react'
+import { Link, useNavigate } from 'react-router-dom'
 import { toast } from 'react-toastify'
-import {Link, useNavigate} from "react-router-dom"
-import { Button } from '@mui/material';
-import { signinAdmin } from '../../service/admin'
+import { signinUser } from '../../service/user'
 
-function AdminLoginForm() {
+export function Signin() {
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
 
@@ -18,40 +17,56 @@ function AdminLoginForm() {
       toast.warn('enter password')
     } else {
       // make the api call
-      const result = await signinAdmin(email, password)
-      if (result['status'] == 'success') {
+      const result = await signinUser(email, password)
+      console.log(result);
+      if (result.status == 200 || result.status == 201) {
         // cache the token
-        const token = result['data']['token']
+        const token = result.data.jwt
+        console.log(token);
         sessionStorage['token'] = token
 
-        toast.success('Welcome to the "Farm-Easy"')
-        navigate('/')
+        toast.success('Welcome to FarmEasy')
+        navigate('/adminDashboard')
       } else {
-        toast.error(result['error'])
+        toast.error("Invalid Credentials")
       }
     }
   }
 
   return (
-    <div className="adminLoginForm">
-		<div className="header-text">
-			Admin Login Form
-		</div>
-    <form method='POST'>
-            <input onChange={(event)=>{
-              setEmail(event.target.value);
-            }} placeholder="Your Email Address" type="email" required /> 
-            <input onChange={(event)=>{
-              setPassword(event.target.value);
-            }} placeholder="Your Password" type="password" required /> 
-             <Button onClick={onSignin} type="submit" id="button" variant="contained">Login</Button>
-            <span><Link to='/login'>Farmer Login</Link></span> 
-            
-            <br/>
-            <span><a href="/counsellorLogin">Counsellor Login</a></span>
-            </form>
-	</div>
+    <>
+    <div className='loginForm'>
+      <div className='header-text'>Admin Login</div>
+            <div className='mb-3'>
+              <input
+                onChange={(e) => setEmail(e.target.value)}
+                type='email'
+                placeholder='abc@test.com'
+                className='form-control'
+              />
+            </div>
+            <div className='mb-3'>
+              <input
+                onChange={(e) => setPassword(e.target.value)}
+                type='password'
+                placeholder='xxxxxxxx'
+                className='form-control'
+              />
+            </div>
+            <div className='mb-3'>
+              <div>
+                <span><Link to="/login">Farmer Login</Link></span>
+                <br />
+                <span><Link to="/counsellorLogin">Counsellor Login</Link></span>
+              </div>
+              <br />
+              <button onClick={onSignin} className='btn btn-primary mt-2'>
+                Login
+              </button>
+            </div>
+          </div>
+    </>
   )
 }
 
-export default AdminLoginForm
+export default Signin

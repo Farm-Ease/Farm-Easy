@@ -1,4 +1,4 @@
-import { Routes,Route } from 'react-router-dom';
+import { Routes,Route, createBrowserRouter } from 'react-router-dom';
 import { ToastContainer } from 'react-toastify';
 import '../node_modules/react-toastify/dist/ReactToastify.css';
 
@@ -23,10 +23,14 @@ import FarmerManagement from './pages/adminDashboard/FarmerManagement';
 import AppointmentManagement from './pages/adminDashboard/AppointmentManagement';
 import CounsellorProfile from './pages/counsellorDashboard/CounsellorProfile';
 import ApmcAppointmentManagement from './pages/farmerDashboard/ApmcAppointmentMangement';
+import { AuthProvider } from './contexts/AuthContext';
 
 function App() {
+
+  
   return (
   <div className='container-fluid'>
+    <AuthProvider>
     <Routes>
       <Route path="/" element={<LandingPage/>}></Route>
       <Route path="/register" element={<Register/>}></Route>
@@ -63,6 +67,7 @@ function App() {
       >
       </Route>
       
+
       <Route
         path='/adminDashboard/mngfarmer'
           element={
@@ -98,6 +103,7 @@ function App() {
     
 
     <ToastContainer />
+    </AuthProvider>
   </div>
   );
 }

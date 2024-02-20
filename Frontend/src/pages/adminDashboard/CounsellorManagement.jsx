@@ -292,7 +292,7 @@ function CounsellorManagement() {
               <hr></hr>
 
               <div class='table-responsive'>
-                <table class='table table-bordered'>
+                <table class='table table-striped'>
                   <thead>
                     <tr>
                       <th>Id</th>
