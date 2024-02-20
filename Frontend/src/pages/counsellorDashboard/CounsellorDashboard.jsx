@@ -56,7 +56,6 @@ function CounsellorDashboard() {
 
   return (
     <>
-      <Navbar />
       <div class="container-fluid">
         <div class="row">
           <nav class="col-md-2 d-none d-md-block bg-light sidebar">
@@ -132,7 +131,7 @@ function CounsellorDashboard() {
               <hr></hr>
               {isPresent &&
                 <div class='table-responsive'>
-                  <table class='table table-bordered'>
+                  <table class='table table-striped'>
                     <thead>
 
                       <tr>

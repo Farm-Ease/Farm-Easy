@@ -16,7 +16,7 @@ export async function RegisterUser(name, email, number, aadhaar, dob, state, dis
       password,
     }
     const response = await axios.post(url, body)
-    return response.data
+    return response
   } catch (ex) {
     return createError(ex)
   }
@@ -30,7 +30,7 @@ export async function signinUser(email, password) {
       password,
     }
     const response = await axios.post(url, body)
-    return response.data
+    return response
   } catch (ex) {
     return createError(ex)
   }

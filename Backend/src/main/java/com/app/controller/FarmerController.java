@@ -36,6 +36,7 @@ public class FarmerController {
 	@Autowired
 	private CounsellorService counsellorService;
 	
+	
 	@PostMapping("/AddFarmer")
 	public ResponseEntity<?> addNewFarmer(@RequestBody @Valid FarmerDTO farmerDto) {
 		System.out.println("in add farmer " + farmerDto);
@@ -44,7 +45,7 @@ public class FarmerController {
 				.body(farmerService.addNewFarmer(farmerDto));
 	}
 	
-	@PutMapping("/UpdateFarmer/{farmerId}")//update farmer
+	@PutMapping("/UpdateFarmer/{farmerId}")
 	public ResponseEntity<?> updateFarmer(@PathVariable Long farmerId, @RequestBody @Valid FarmerDTO farmerDto){
 		System.out.println("In update farmer "+farmerId+" "+farmerDto);
 		return ResponseEntity.ok(farmerService.updateFarmer(farmerId,farmerDto));
@@ -56,7 +57,6 @@ public class FarmerController {
 		return ResponseEntity
 				.status(HttpStatus.CREATED)
 				.body(farmerService.addAppointment(apptDTO));
-				
 	}
 	
 	@PutMapping("/updateAppointment/{appointmentId}")
@@ -74,6 +74,10 @@ public class FarmerController {
 	@GetMapping("/getCounsellor/{district}")
 	public ResponseEntity<?> getCounsellorByDistrict(@PathVariable String district){
 		return ResponseEntity.ok(counsellorService.getCounsellorByDistrict(district));
-
-}
+	}
+		
+	@GetMapping("/getAppointment/{farmerId}")
+	public ResponseEntity<?> getAppointmentByFarmerId(@PathVariable Long farmerId){
+		return ResponseEntity.ok(farmerService.getAppointmentByFarmerId(farmerId));
+	}
 }

@@ -5,7 +5,7 @@ import {useNavigate} from "react-router-dom"
 import { Button } from '@mui/material';
 import Navbar from '../../Components/navbar/Navbar1'
 
-function CounsellorDashboard() {
+function FarmerDashboard() {
 
 
   return (
@@ -23,7 +23,7 @@ function CounsellorDashboard() {
                 </a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="#">
+                <a class="nav-link" href="farmerDashboard/manageFarmerApmcAppointment">
                   <span data-feather="file"></span>
                   APMC Appointment
                 </a>
@@ -38,4 +38,4 @@ function CounsellorDashboard() {
   )
 }
 
-export default CounsellorDashboard
+export default FarmerDashboard

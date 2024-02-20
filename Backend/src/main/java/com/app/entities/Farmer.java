@@ -33,29 +33,23 @@ public class Farmer extends BaseEntity{
 	
 	@Column(length = 30)
 	private String name;
-	@Column(length = 30, unique = true) // =>unique
+	@Column(length = 30, unique = true)
 	private String email;
 	@Column(length=10,nullable=false)
 	private String number;
-	@Column(length=12,nullable = false) // =>NOT NULL
+	@Column(length=12,nullable = false)
 	private String aadhaar;
-	@Column(length=30,nullable = false) // =>NOT NULL
+	@Column(length=30,nullable = false)
 	//@DateTimeFormat(pattern = "yyyy-MM-dd")
 	private LocalDate dob;
-	@Column(length=30,nullable = false) // =>NOT NULL
+	@Column(length=30,nullable = false)
 	private String state;
-	@Column(length=30,nullable = false) // =>NOT NULL
+	@Column(length=30,nullable = false)
 	private String district;
-	@Column(length=30,nullable = false) // =>NOT NULL
+	@Column(length=30,nullable = false)
 	private String village;
 	//@Column(length = 300, nullable = false)
 	private String password;
-//	@Column(length=30,nullable = false) // =>NOT NULL
-//	private String kharifCrop;
-//	@Column(length=30,nullable = false) // =>NOT NULL
-//	private String rabiCrop;
-//	@Column(length=30,nullable = false) // =>NOT NULL
-//	private String zaidCrop;
 	
 	//One to many association betn farmer and crops  -- unidirectional
 //	@OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)

@@ -1,5 +1,6 @@
 package com.app.service;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -22,6 +23,7 @@ import com.app.dto.ApmcAppointmentDTO;
 import com.app.dto.CounsellorDTO;
 import com.app.dto.FarmerDTO;
 import com.app.entities.Admin;
+import com.app.entities.ApmcAppointment;
 import com.app.entities.Counsellor;
 import com.app.entities.Product;
 
@@ -86,10 +88,14 @@ public class AdminServiceImpl implements AdminService{
 
 	@Override
 	public List<ApmcAppointmentDTO> getAllAppointment() {
-		return apmcAppointmentDao.findAll()
-				.stream()
-				.map(apmcAppointment -> mapper.map(apmcAppointment, ApmcAppointmentDTO.class))
-				.collect(Collectors.toList());
+		List<ApmcAppointment> apmcAppointments = apmcAppointmentDao.findAll();
+		List<ApmcAppointmentDTO> result = new ArrayList<ApmcAppointmentDTO>();
+		for(ApmcAppointment apmcApp : apmcAppointments) {
+			ApmcAppointmentDTO apmcdto = mapper.map(apmcApp, ApmcAppointmentDTO.class);
+			apmcdto.setFarmer_id(apmcApp.getFarmer().getId());
+			result.add(apmcdto);
+		}
+		return result;
 	}
 
 	@Override

@@ -40,12 +40,5 @@ public class FarmerDTO {
 	@NotBlank
 	private String number;
 	@DateTimeFormat(pattern = "yyyy-MM-dd")
-	private LocalDate dob;
-//	@NotBlank
-//	private String kharifCrop;
-//	@NotBlank
-//	private String rabiCrop;
-//	@NotBlank
-//	private String zaidCrop;
-	
+	private LocalDate dob;	
 }

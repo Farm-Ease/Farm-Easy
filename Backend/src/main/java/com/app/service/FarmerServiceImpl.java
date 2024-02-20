@@ -1,5 +1,6 @@
 package com.app.service;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
@@ -45,25 +46,20 @@ public class FarmerServiceImpl implements FarmerService{
 	
 	@Override
 	public ApmcAppointmentDTO addAppointment(ApmcAppointmentDTO apptDTO) {
-		// TODO Auto-generated method stub
 		Farmer farmer = farmerDao.findById(apptDTO.getFarmer_id())
 				.orElseThrow(() -> new ResourceNotFoundException("Invalid farmer Id!!!"));
 		ApmcAppointment apptEntity = mapper.map(apptDTO, ApmcAppointment.class);
-		//System.out.println(farmerApptDTO.getFarmerId());
-		
-//		ApmcAppointment persistentAppt = appointmentDao.save(apptEntity);
-//		return mapper.map(persistentAppt, FarmerAppointmentDTO.class);
 		
 		farmer.addAppointment(apptEntity);
-		ApmcAppointment savedAppt = appointmentDao.save(apptEntity);
-		//System.out.println("emp entity id " + empEntity.getId() + " " + savedEmp.getId());
-		return mapper.map(savedAppt, ApmcAppointmentDTO.class);
+		farmerDao.save(farmer);
+		ApmcAppointmentDTO appDto = mapper.map(apptEntity, ApmcAppointmentDTO.class);
+		appDto.setFarmer_id(apptDTO.getFarmer_id());
+		return appDto;
 	}
 
 	
 	@Override
 	public ApiResponse deleteAppointment(Long appointmentId) {
-		// TODO Auto-generated method stub
 		ApmcAppointment appt = appointmentDao.findById(appointmentId).
 				orElseThrow(()-> new ResourceNotFoundException("Invalid appt id"));
 		appointmentDao.delete(appt);
@@ -75,15 +71,14 @@ public class FarmerServiceImpl implements FarmerService{
 		ApmcAppointment appt = appointmentDao.findById(appointmentId).orElseThrow(()->new ResourceNotFoundException("Invalid appt id"));
 		appt.setDate(apptDto.getDate());
 		appt.setQuantity(apptDto.getQuantity());
-		//appt.setProducts(apptDto.getProducts());
-		//appt.setTransaction();
+		appt.setCrop(apptDto.getCrop());
+//		System.out.println(appt.getFarmer());
 		return mapper.map(appt, ApmcAppointmentDTO.class);
 	}
 
 
 	@Override
-	public FarmerDTO updateFarmer(Long farmerId, @Valid FarmerDTO farmerDto) {
-		// TODO Auto-generated method stubs 
+	public FarmerDTO updateFarmer(Long farmerId, @Valid FarmerDTO farmerDto) { 
 		Farmer  farmer = farmerDao.findById(farmerId).orElseThrow(()-> new ResourceNotFoundException("Invalid farmer id"));
 		mapper.map(farmerDto, farmer);
 		farmerDto.setId(farmerId);
@@ -95,7 +90,6 @@ public class FarmerServiceImpl implements FarmerService{
 	@Override
 	public List<FarmerDTO> getFarmerByName(String farmerName) {
 		List<Farmer> farmers = farmerDao.findAllByName(farmerName);
-		
 		if(!farmers.isEmpty()) {
 			return farmers
 			.stream()
@@ -104,8 +98,6 @@ public class FarmerServiceImpl implements FarmerService{
 		}
 		
 		throw new ResourceNotFoundException("No such farmer Exists !");
-		
-		
 	}
 
 
@@ -124,6 +116,21 @@ public class FarmerServiceImpl implements FarmerService{
 		farmer.setPassword(encoder.encode(farmer.getPassword()));//pwd : encrypted using SHA
 		Farmer persistFarmer = farmerDao.save(farmer);
 		return mapper.map(persistFarmer, Signup.class);
+	}
+
+
+	@Override
+	public List<ApmcAppointmentDTO> getAppointmentByFarmerId(Long farmerId) {
+		Farmer farmer = farmerDao.findById(farmerId)
+				.orElseThrow(() -> new ResourceNotFoundException("Invalid farmer Id!!!"));
+		List<ApmcAppointment> apmcAppointments = appointmentDao.findByFarmer(farmer);
+		List<ApmcAppointmentDTO> result = new ArrayList<ApmcAppointmentDTO>();
+		for(ApmcAppointment apmcApp : apmcAppointments) {
+			ApmcAppointmentDTO apmcdto = mapper.map(apmcApp, ApmcAppointmentDTO.class);
+			apmcdto.setFarmer_id(apmcApp.getFarmer().getId());
+			result.add(apmcdto);
+		}
+		return result;
 	}
 
 	

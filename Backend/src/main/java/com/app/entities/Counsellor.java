@@ -15,7 +15,7 @@ public class Counsellor extends BaseEntity {
 
 	@Column(length = 30)
 	private String name;
-	@Column(length = 30, unique = true) // =>unique
+	@Column(length = 30, unique = true)
 	private String email;
 	private String mobileNo;
 	private String state;
