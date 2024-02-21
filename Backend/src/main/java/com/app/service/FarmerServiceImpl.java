@@ -24,6 +24,7 @@ import com.app.dto.CounsellorDTO;
 import com.app.dto.FarmerAppointmentDTO;
 import com.app.dto.FarmerDTO;
 import com.app.dto.Signup;
+import com.app.dto.UserDetailDTO;
 import com.app.entities.ApmcAppointment;
 import com.app.entities.Counsellor;
 import com.app.entities.Farmer;
@@ -133,6 +134,12 @@ public class FarmerServiceImpl implements FarmerService{
 		return result;
 	}
 
-	
+	@Override
+	 public UserDetailDTO getUserDetailsByEmail(String email) {
+       Farmer userEntity = farmerDao.findByEmail(email)
+                                              .orElseThrow(() -> 
+	                                              new ResourceNotFoundException("User not found with Email id : " + email));
+       return mapper.map(userEntity, UserDetailDTO.class);
+   }
 		
 }

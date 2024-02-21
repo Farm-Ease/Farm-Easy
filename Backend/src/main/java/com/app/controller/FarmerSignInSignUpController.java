@@ -14,9 +14,11 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.app.dto.FarmerDTO;
 import com.app.dto.SigninRequest;
 import com.app.dto.SigninResponse;
 import com.app.dto.Signup;
+import com.app.dto.UserDetailDTO;
 import com.app.security.JwtUtils;
 import com.app.service.FarmerService;
 
@@ -58,8 +60,9 @@ public class FarmerSignInSignUpController {
 						(reqDTO.getEmail(), reqDTO.getPassword()));
 		System.out.println(verifiedAuth.getClass());// Custom user details
 		// => auth success
+		UserDetailDTO user = farmerService.getUserDetailsByEmail(reqDTO.getEmail());
 		return ResponseEntity
-				.ok(new SigninResponse(utils.generateJwtToken(verifiedAuth), "Successful Authentication!!!"));
+				.ok(new SigninResponse("Successful Authentication!!!",utils.generateJwtToken(verifiedAuth), user.getId()));
 
 	}
 
