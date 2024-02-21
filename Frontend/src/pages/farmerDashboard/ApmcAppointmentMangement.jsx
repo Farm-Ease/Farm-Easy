@@ -114,7 +114,7 @@ function ApmcAppointmentManagement() {
           crop
         };
         console.log(selectedApmcAppointment.id);
-        const response = await axios.put(`http://localhost:8080/farmer/updateAppointment/${selectedApmcAppointment.id}`, updateApmcAppointment);
+        const response = await axios.put(`http://localhost:8080/farmer/updateAppointment/${selectedApmcAppointment.id}`, updateApmcAppointment, { headers: { 'Content-Type': 'application/json' } });
   
         if (response.status === 200) {
           toast.success('Your Appointment updated successfully');

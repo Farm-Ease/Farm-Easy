@@ -6,7 +6,7 @@ import config from '../../config'
 import { addItem } from '../../features/cartSlice'
 import { getAllProducts } from '../../service/buy'
 import img from '../../assets/flax.jpg'
-
+import { useNavigate } from 'react-router-dom';
 function Product({ item }) {
   console.log(item.productName);
   // get the dispatch object
@@ -83,6 +83,8 @@ export function ApmcBuy() {
     loadAllProducts()
   }, [])
 
+  const navigate=useNavigate();
+
   return (
     <>
       <Navbar />
@@ -98,6 +100,7 @@ export function ApmcBuy() {
             )
           })}
         </div>
+        
       </div>
     </>
   )

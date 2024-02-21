@@ -28,7 +28,7 @@ import lombok.ToString;
 @AllArgsConstructor
 @Getter
 @Setter
-@ToString(exclude ={"croplist","appointmentlist"})
+@ToString(exclude ={"crops","appointmentlist"})
 public class Farmer extends BaseEntity{
 	
 	@Column(length = 30)
@@ -55,6 +55,10 @@ public class Farmer extends BaseEntity{
 //	@OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
 //	@JoinColumn(name = "farmer_id")
 //	private List<Crop> cropList = new ArrayList<>();
+	
+	@OneToOne(mappedBy = "farmer" ,cascade = CascadeType.ALL)
+//    @JoinColumn(name = "crop_id", referencedColumnName = "id")
+    private Crop crops;
 	
 	
 	//one to Many association betn Farmer <--> APMCAppointement -- bidirectional
