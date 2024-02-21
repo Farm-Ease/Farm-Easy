@@ -68,16 +68,6 @@ function CounsellorDashboard() {
                     Farmers
                   </a>
                 </li>
-                <li class="nav-item">
-                  <a class="nav-link" href="">
-                    <span data-feather="bar-chart-2"></span>
-                    Products
-                  </a>
-                </li>
-                <a class="nav-link"  href ="/counsellorDashboard/profile">
-                  <span data-feather="bar-chart-2"></span>
-                  Update Profile
-                </a>
               </ul>
             </div>
           </nav>
@@ -137,7 +127,6 @@ function CounsellorDashboard() {
 
                       <tr>
                         <th>Name</th>
-                        <th>Crop Sowed</th>
                         <th>Email</th>
                         <th>MobileNo</th>
                         <th>State</th>
@@ -149,7 +138,6 @@ function CounsellorDashboard() {
                       {farmers.map(farmer => (
                         <tr key={farmer.id}>
                           <td>{farmer.name}</td>
-                          <td>TBD</td>
                           <td>{farmer.email}</td>
                           <td>{farmer.number}</td>
                           <td>{farmer.state}</td>

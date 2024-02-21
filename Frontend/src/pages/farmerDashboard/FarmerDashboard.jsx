@@ -84,7 +84,7 @@ function FarmerDashboard() {
               <li class="nav-item">
                 <a class="nav-link active" href="#">
                   <span data-feather="home"></span>
-                  Dashboard <span class="sr-only">(current)</span>
+                  Crop Management<span class="sr-only"></span>
                 </a>
               </li>
               <li class="nav-item">
@@ -115,6 +115,7 @@ function FarmerDashboard() {
                     <tbody>
                       <tr>
                         <td>Farmer Id:</td>
+                        <td>
                       <input
                         type="number"
                         id="farmer_id"
@@ -123,9 +124,11 @@ function FarmerDashboard() {
                       onChange={handleChange}
                       required
                       />
+                      </td>
                     </tr>
                       <tr>
                         <td>Kharif Crop:</td>
+                        <td>
                       <input
                         type="text"
                         id="khraifCrop"
@@ -133,9 +136,11 @@ function FarmerDashboard() {
                       value={selectedCrop.khraifCrop}
                       onChange={handleChange}
                       />
+                      </td>
                       </tr>
                       <tr>
                         <td>Kharif Crop Quantity:</td>
+                        <td>
                       <input
                         type="number"
                         id="khraifCropQuantity"
@@ -144,9 +149,11 @@ function FarmerDashboard() {
                       onChange={handleChange}
                       // required
                       />
+                      </td>
                     </tr>
                     <tr>
                         <td>Rabi Crop:</td>
+                        <td>
                       <input
                         type="text"
                         id="rabiCrop"
@@ -154,9 +161,11 @@ function FarmerDashboard() {
                       value={selectedCrop.rabiCrop}
                       onChange={handleChange}
                       />
+                      </td>
                       </tr>
                       <tr>
                         <td>Rabi Crop Quantity:</td>
+                        <td>
                       <input
                         type="number"
                         id="rabiCropQuantity"
@@ -165,9 +174,11 @@ function FarmerDashboard() {
                       onChange={handleChange}
                       // required
                       />
+                      </td>
                     </tr>
                     <tr>
                         <td>Zaid Crop:</td>
+                        <td>
                       <input
                         type="text"
                         id="zaidCrop"
@@ -175,9 +186,11 @@ function FarmerDashboard() {
                       value={selectedCrop.zaidCrop}
                       onChange={handleChange}
                       />
+                      </td>
                       </tr>
                       <tr>
                         <td>Zaid Crop Quantity:</td>
+                        <td>
                       <input
                         type="number"
                         id="zaidCropQuantity"
@@ -186,6 +199,7 @@ function FarmerDashboard() {
                       onChange={handleChange}
                       // required
                       />
+                      </td>
                     </tr>
                       <tr>
                         <td></td>
@@ -197,7 +211,6 @@ function FarmerDashboard() {
                   </table>
                   </form>
                 </div>
-                <hr></hr>
               <br></br>       
             </div>
           </main> 

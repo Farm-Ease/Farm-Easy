@@ -11,8 +11,7 @@ const CounsellorData = ({ counsellors }) => {
                                 <th>State</th>
                                 <th>District</th>
                                 <th>Village</th>
-                                <th></th>
-                                <th></th>
+                                
                             </tr>
                         </thead>
                         <tbody>

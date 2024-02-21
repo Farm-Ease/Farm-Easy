@@ -18,7 +18,7 @@ function AdminDashboard() {
                 <li className="nav-item">
                   <a className="nav-link active" href="/adminDashboard">
                     <span data-feather="home"></span>
-                    Dashboard <span className="sr-only">(current)</span>
+                    Dashboard <span className="sr-only"></span>
                   </a>
                 </li>
                 <li className="nav-item">
@@ -50,7 +50,11 @@ function AdminDashboard() {
           </nav>
 
         <main role="main" class="col-md-9 ml-sm-auto col-lg-10 pt-3 px-4">
-          
+          <br />
+          <div className='container'>
+            <br />
+              <center><h1>Welcome Admin</h1></center>
+              </div>
         </main> 
       </div>
     </div>

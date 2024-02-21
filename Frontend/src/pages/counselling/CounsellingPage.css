@@ -39,14 +39,15 @@
 	color: white;
 }
 .counsellingForm input {
-	margin: 10px 0px;
+	margin: 10px 180px;
 	border: none;
 	padding: 10px;
 	border-radius: 5px;
-	width: 60%;
+	width: 50%;
 	font-size: 18px;
 	font-family: poppins;
-	padding-left: 200px;
+	padding-left: 140px;
+	text-align: justify;
 }
 .counsellingForm input[type=checkbox] {
 	display: none;
@@ -88,10 +89,10 @@
 	border: none;
 	border-radius: 5px;
 	cursor: pointer;
-	width: 50%;
+	width: 35%;
 	font-size: 18px;
 	padding: 10px;
-	margin: 20px 0px;
+	margin: 10px 230px;
 }
 .counsellingForm a {
 	color: lightblue;

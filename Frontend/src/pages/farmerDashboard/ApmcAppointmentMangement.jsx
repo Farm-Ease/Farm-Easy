@@ -157,7 +157,7 @@ function ApmcAppointmentManagement() {
                                 <li class="nav-item">
                                     <a class="nav-link active" href="#">
                                         <span data-feather="home"></span>
-                                        Dashboard <span class="sr-only">(current)</span>
+                                        Crop Managment<span class="sr-only"></span>
                                     </a>
                                 </li>
                                 <li class="nav-item">
@@ -180,24 +180,30 @@ function ApmcAppointmentManagement() {
                     <tbody>
                       <tr>
                         <td>Date</td>
+                        <td>
                         <input type='date'
                           value={date}
                           name="Date"
                           onChange={(event) => setDate(event.target.value)} />
+                          </td>
                       </tr>
                       <tr>
                         <td>Quantity</td>
+                        <td>
                         <input type='number'
                           value={quantity}
                           name="Quantity"
                           onChange={(event) => setQuantity(event.target.value)} />
+                          </td>
                     </tr>
                     <tr>
                         <td>Crop</td>
+                        <td>
                         <input type='text'
                           value={crop}
                           name="Crop"
                           onChange={(event) => setCrop(event.target.value)} />
+                        </td>
                      </tr>
                       <tr>
                         <td></td>
