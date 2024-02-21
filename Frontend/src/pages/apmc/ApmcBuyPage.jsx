@@ -5,11 +5,27 @@ import Navbar from '../../Components/navbar/Navbar1'
 import config from '../../config'
 import { addItem } from '../../features/cartSlice'
 import { getAllProducts } from '../../service/buy'
-import img from '../../assets/flax.jpg'
+import flax from '../../assets/flax.jpg'
+import wheat from '../../assets/wheat.jpg'
+import urea from '../../assets/urea.jpg'
+import npk from '../../assets/npk.jpg'
 import { useNavigate } from 'react-router-dom';
 import { Button } from 'bootstrap'
 
 function Product({ item }) {
+  const[source,setSource]=useState();
+  useEffect(()=>{    if(item.image =="wheat.jpg"){
+    setSource(wheat)
+  }
+  if(item.image =="flax.jpg"){
+    setSource(flax)
+  }
+  if(item.image =="urea.jpg"){
+    setSource(urea)
+  }
+  if(item.image =="npk.jpg"){
+    setSource(npk)
+  }},[])
   console.log(item.productName);
   // get the dispatch object
   const dispatch = useDispatch()
@@ -31,14 +47,14 @@ function Product({ item }) {
     <>
     <div className='card' style={{ height: 280 }}>
       <div style={{ textAlign: 'center' }}>
-        <img
+      
+          <img
           style={{ width: 150 }}
           className='card-img-top'
-          //static routing
-          //src={config.server + '/' + item.image}
-          src={img}
+          src={source}
           alt=''
         />
+        
       </div>
       <div className='card-body'>
         <div style={{ fontWeight: 'bold', fontSize: 19 }}>{getTitle()}</div>

@@ -66,7 +66,6 @@ export function Cart() {
               <thead>
                 <tr>
                   <th>No</th>
-                  <th>Image</th>
                   <th>Name</th>
                   <th>rate</th>
                   <th>Quantity</th>
@@ -79,14 +78,6 @@ export function Cart() {
                   return (
                     <tr key={index}>
                       <td>{index + 1}</td>
-                      <td>
-                        <img
-                          style={{ width: 50 }}
-                          //src={config.server + '/' + item['image']}
-                          src={img}
-                          alt=''
-                        />
-                      </td>
                       <td>{item['productName']}</td>
                       <td>{item['rate']}</td>
                       <td>{item['quantity']}</td>
