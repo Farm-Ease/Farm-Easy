@@ -137,128 +137,138 @@ function ProductManagement() {
   return (
     <>
     <Navbar/>
-        <div class="container-fluid">
-          <div class="row">
-            <nav class="col-md-2 d-none d-md-block bg-light sidebar">
-              <div class="sidebar-sticky">
-                <ul class="nav flex-column">
-                  <li class="nav-item">
-                    <a class="nav-link active" href="/adminDashboard">
-                      <span data-feather="home"></span>
-                      Dashboard <span class="sr-only">(current)</span>
-                    </a>
-                  </li>
-                  <li class="nav-item">
-                    <a class="nav-link" href="/adminDashboard/mngfarmer">
-                      <span data-feather="file"></span>
-                      Farmers
-                    </a>
-                  </li>
-                  <li class="nav-item">
-                    <a class="nav-link" href="/adminDashboard/mngcounsellor">
-                      <span data-feather="shopping-cart"></span>
-                      Counsellor
-                    </a>
-                  </li>
-                  <li class="nav-item">
-                    <a class="nav-link" href="/adminDashboard/mngappointment">
-                      <span data-feather="users"></span>
-                      APMC Appointments
-                    </a>
-                  </li>
-                  <li class="nav-item">
-                    <a class="nav-link" href="/adminDashboard/mngproduct">
-                      <span data-feather="bar-chart-2"></span>
-                      Products
-                </a>
-              </li>
-            </ul>
-          </div>
-        </nav>
-
-        <main role="main" class="col-md-9 ml-sm-auto col-lg-10 pt-3 px-4">
-        <div className='container'>
-              <center><h1>Welcome to Product dashboard!</h1></center>
-              <hr></hr>
-
-              <div class='table-responsive'>
-                <table class='table table-bordered'>
-                  <tbody>
-                    <tr>
-                      <td>Product Name</td>
-                      <input type='text'
-                        value={productName}
-                        name="Name"
-                        onChange={(event) => setProductName(event.target.value)} />
-                    </tr>
-                    <tr>
-                      <td>Rate</td>
-                      <input type='number'
-                        value={rate}
-                        name="Rate"
-                        onChange={(event) => setRate(event.target.value)} />
-                    </tr>
-                    <tr>
-                      <td>Quantity</td>
-                      <input type='number'
-                        value={quantity}
-                        name="Quantity"
-                        onChange={(event) => setQuantity(event.target.value)} />                          
-                    </tr>
-                    <tr>
-                      <td></td>
-                      <td>
-                        <button className='btn btn-primary' onClick={OnAddProduct}>Add Record</button>
-                        {" "}
-                        <button className='btn btn-info' onClick={resetForm}>Reset</button>
-                        {" "}
-                        <button className='btn btn-success' onClick={updateProduct}>Update</button>
-                      </td>
-                    </tr>
-                  </tbody>
-                </table>
-              </div>
-              <hr></hr>
-
-              <div class='table-responsive'>
-                <table class='table table-striped'>
-                  <thead>
-                    <tr>
-                      <th>Id</th>
-                      <th>Product Name</th>
-                      <th>Rate</th>
-                      <th>Quantity</th>
-                      <th></th>
-                      <th></th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    {products.map(product => (
-                      <tr key={product.id}>
-                        <td>{product.id}</td>
-                        <td>{product.productName}</td>
-                        <td>{product.rate}</td>
-                        <td>{product.quantity}</td>
-                        <td>
-                          <button className='btn btn-warning'
-                            onClick={() => { editProduct(product) }}>
-                            Edit
-                          </button>
-                        </td>
-                        <td>
-                          <button className='btn btn-danger'
-                            onClick={() => { deleteProduct(product.id) }}>
-                            Delete
-                          </button>
-                        </td>
-                      </tr>
-                    ))}
-                  </tbody>
-                </table>
-              </div>
+    <div className="container-fluid">
+        <div className="row">
+          <nav className="col-md-2 col-12 d-md-block bg-light sidebar">
+            <div className="sidebar-sticky">
+              <ul className="nav flex-column">
+                <li className="nav-item">
+                  <a className="nav-link active" href="/adminDashboard">
+                    <span data-feather="home"></span>
+                    Dashboard <span className="sr-only">(current)</span>
+                  </a>
+                </li>
+                <li className="nav-item">
+                  <a className="nav-link" href="/adminDashboard/mngfarmer">
+                    <span data-feather="file"></span>
+                    Farmers
+                  </a>
+                </li>
+                <li className="nav-item">
+                  <a className="nav-link" href="/adminDashboard/mngcounsellor">
+                    <span data-feather="shopping-cart"></span>
+                    Counsellor
+                  </a>
+                </li>
+                <li className="nav-item">
+                  <a className="nav-link" href="/adminDashboard/mngappointment">
+                    <span data-feather="users"></span>
+                    APMC Appointments
+                  </a>
+                </li>
+                <li className="nav-item">
+                  <a className="nav-link" href="/adminDashboard/mngproduct">
+                    <span data-feather="bar-chart-2"></span>
+                    Products
+                  </a>
+                </li>
+              </ul>
             </div>
-          
-        </main> 
+          </nav> 
+
+
+          <main role="main" className="col-md-9 ml-sm-auto col-lg-10 pt-3 px-4">
+  <div className='container'>
+    <center><h1>Welcome to Product dashboard!</h1></center>
+    <hr />
+
+    <div className='table-responsive'>
+      <table className='table table-bordered'>
+        <tbody>
+          <tr>
+            <td>Product Name</td>
+            <td>
+              <input type='text'
+                className="form-control"
+                value={productName}
+                name="Name"
+                onChange={(event) => setProductName(event.target.value)} />
+            </td>
+          </tr>
+          <tr>
+            <td>Rate</td>
+            <td>
+              <input type='number'
+                className="form-control"
+                value={rate}
+                name="Rate"
+                onChange={(event) => setRate(event.target.value)} />
+            </td>
+          </tr>
+          <tr>
+            <td>Quantity</td>
+            <td>
+              <input type='number'
+                className="form-control"
+                value={quantity}
+                name="Quantity"
+                onChange={(event) => setQuantity(event.target.value)} />                          
+            </td>
+          </tr>
+          <tr>
+            <td></td>
+            <td>
+              <button className='btn btn-primary' onClick={OnAddProduct}>Add Record</button>
+              {" "}
+              <button className='btn btn-info' onClick={resetForm}>Reset</button>
+              {" "}
+              <button className='btn btn-success' onClick={updateProduct}>Update</button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <hr />
+
+    <div className='table-responsive'>
+      <table className='table table-striped'>
+        <thead>
+          <tr>
+            <th>Id</th>
+            <th>Product Name</th>
+            <th>Rate</th>
+            <th>Quantity</th>
+            <th></th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+          {products.map(product => (
+            <tr key={product.id}>
+              <td>{product.id}</td>
+              <td>{product.productName}</td>
+              <td>{product.rate}</td>
+              <td>{product.quantity}</td>
+              <td>
+                <button className='btn btn-warning'
+                  onClick={() => { editProduct(product) }}>
+                  Edit
+                </button>
+              </td>
+              <td>
+                <button className='btn btn-danger'
+                  onClick={() => { deleteProduct(product.id) }}>
+                  Delete
+                </button>
+              </td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
+  </div>
+</main>
+ 
       </div>
     </div>
   </>
