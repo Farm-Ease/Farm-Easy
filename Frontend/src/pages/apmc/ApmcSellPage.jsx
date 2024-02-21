@@ -60,15 +60,15 @@ function ApmcSellForm() {
 
   const handleSubmit=(event)=>{
     event.preventDefault();
-    setFarmer_id(1);
-    setCrop(formData.crop);
-    setQuantity(formData.quantity);
-    setDate(formData.date);
+    // setFarmer_id(1);
+    // setCrop(formData.crop);
+    // setQuantity(formData.quantity);
+    // setDate(formData.date);
     const body ={
-      crop,
-      date,
-      farmer_id,
-      quantity
+      crop : formData.crop,
+      date : formData.date,
+      farmer_id : 1,
+      quantity : formData.quantity
     }
     addAppointment(body);
     
