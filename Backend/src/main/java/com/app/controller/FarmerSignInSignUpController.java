@@ -62,7 +62,7 @@ public class FarmerSignInSignUpController {
 		// => auth success
 		UserDetailDTO user = farmerService.getUserDetailsByEmail(reqDTO.getEmail());
 		return ResponseEntity
-				.ok(new SigninResponse("Successful Authentication!!!",utils.generateJwtToken(verifiedAuth), user.getId()));
+				.ok(new SigninResponse(utils.generateJwtToken(verifiedAuth),"Successful Authentication!!!", user.getId()));
 
 	}
 

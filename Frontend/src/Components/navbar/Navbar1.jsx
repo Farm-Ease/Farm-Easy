@@ -1,15 +1,24 @@
 import { useSelector } from 'react-redux'
 import { Link, useNavigate } from 'react-router-dom'
+import { toast } from 'react-toastify'
+import { useAuth } from "../../contexts/AuthContext";
 
 export function Navbar() {
   const navigate = useNavigate()
+  const { setRole } = useAuth();
+  const { setUserId } = useAuth();
 
   // get a selector
   const cart = useSelector((state) => state.cart)
 
   const onLogout = () => {
-    sessionStorage.removeItem('token')
-    navigate('/')
+    // sessionStorage.removeItem('token')
+    sessionStorage.clear();
+    console.log("LoggedOut");
+    setRole("loggedOut");
+    setUserId("0");
+    toast.success("Logged Out Successfully!");
+    navigate("/");
   }
 
   return (
