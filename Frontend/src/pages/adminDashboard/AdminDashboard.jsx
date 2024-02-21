@@ -2,13 +2,14 @@ import React, { useState } from 'react'
 import './AdminDashboard.css'
 import axios from 'axios';
 import {useNavigate} from "react-router-dom"
-import Navbar from '../../Components/navbar/Navbar1'
+import Navbar2 from '../../Components/navbar/Navbar2'
 
 function AdminDashboard() {
 
 
   return (
     <>
+        <Navbar2/>
         <div class="container-fluid">
           <div class="row">
             <nav class="col-md-2 d-none d-md-block bg-light sidebar">

@@ -3,8 +3,12 @@ import { useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import { toast } from 'react-toastify'
 import { signinUser } from '../../service/user'
+import { useAuth } from "../../contexts/AuthContext";
 
 export function Signin() {
+  const { setRole } = useAuth();
+  const { setUserId } = useAuth();
+
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
 
@@ -24,6 +28,8 @@ export function Signin() {
         const token = result.data.jwt
         console.log(token);
         sessionStorage['token'] = token
+        setUserId(result.data.id)
+        setRole("farmer");
 
         toast.success('Welcome to FarmEasy')
         navigate('/')

@@ -13,6 +13,7 @@ import com.app.dto.CropDTO;
 import com.app.dto.FarmerAppointmentDTO;
 import com.app.dto.FarmerDTO;
 import com.app.dto.Signup;
+import com.app.dto.UserDetailDTO;
 
 public interface FarmerService {
 
@@ -31,6 +32,8 @@ public interface FarmerService {
 	Signup userRegistration(@Valid Signup dto);
 
 	List<ApmcAppointmentDTO> getAppointmentByFarmerId(Long farmerId);
+	
+	UserDetailDTO getUserDetailsByEmail(String email);
 
 	CropDTO addCrop(CropDTO cropDTO);
 

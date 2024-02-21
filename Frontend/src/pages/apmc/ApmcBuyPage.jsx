@@ -7,6 +7,8 @@ import { addItem } from '../../features/cartSlice'
 import { getAllProducts } from '../../service/buy'
 import img from '../../assets/flax.jpg'
 import { useNavigate } from 'react-router-dom';
+import { Button } from 'bootstrap'
+
 function Product({ item }) {
   console.log(item.productName);
   // get the dispatch object
@@ -26,6 +28,7 @@ function Product({ item }) {
   }
 
   return (
+    <>
     <div className='card' style={{ height: 280 }}>
       <div style={{ textAlign: 'center' }}>
         <img
@@ -52,6 +55,7 @@ function Product({ item }) {
         </div>
       </div>
     </div>
+    </> 
   )
 }
 
