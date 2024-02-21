@@ -6,6 +6,7 @@ import config from '../../config'
 import { addItem } from '../../features/cartSlice'
 import { getAllProducts } from '../../service/buy'
 import img from '../../assets/flax.jpg'
+import { Button } from 'bootstrap'
 
 function Product({ item }) {
   console.log(item.productName);
@@ -26,6 +27,7 @@ function Product({ item }) {
   }
 
   return (
+    <>
     <div className='card' style={{ height: 280 }}>
       <div style={{ textAlign: 'center' }}>
         <img
@@ -52,6 +54,7 @@ function Product({ item }) {
         </div>
       </div>
     </div>
+    </> 
   )
 }
 

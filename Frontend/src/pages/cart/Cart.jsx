@@ -6,10 +6,14 @@ import config from '../../config'
 import { clear, updateQuantity } from '../../features/cartSlice'
 import { placeOrder } from '../../service/order'
 import img from '../../assets/flax.jpg'
+import { useAuth } from '../../contexts/AuthContext';
+import { useNavigate } from 'react-router-dom'
 
 export function Cart() {
   const [total, setTotal] = useState(0)
-
+  const{userId} = useAuth();
+  console.log(userId);
+  const navigate = useNavigate();
   // use it for updating the cart slice
   const dispatch = useDispatch()
 
@@ -22,16 +26,17 @@ export function Cart() {
     }
     setTotal(totalAmount)
   }, [cart.items])
-
+  
   const onQuantityUpdate = (itemId, quantity) => {
     dispatch(updateQuantity({ itemId, quantity }))
   }
 
   const onPlaceOrder = async () => {
-    const result = await placeOrder(cart.items, total)
-    if (result['status'] == 'success') {
+    const result = await placeOrder(cart.items, total,userId);
+    console.log(result.data);
+    if (result['status'] === 201) {
       dispatch(clear())
-      toast.success('successfully placed an order')
+      toast.success('successfully placed an order');
     } else {
       toast.error(result['error'])
     }
@@ -45,9 +50,15 @@ export function Cart() {
 
         {/* conditional rendering */}
         {cart.items.length == 0 && (
-          <h3 style={{ textAlign: 'center' }}>
+          <>
+            <h3 style={{ textAlign: 'center' }}>
             There are no products in your cart.
           </h3>
+          <br/>
+          <h4 style={{ textAlign: 'center' }}>
+            <a href="/">Home</a>
+          </h4>
+          </>
         )}
         {cart.items.length > 0 && (
           <div>
