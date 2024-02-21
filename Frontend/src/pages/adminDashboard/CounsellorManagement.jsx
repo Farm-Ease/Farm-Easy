@@ -226,56 +226,81 @@ function CounsellorManagement() {
 
           <main role="main" class="col-md-auto col-lg-10 ml-sm-auto pt-3 px-4">
             <div className='container'>
-              <center><h1>Welcome to dashboard!</h1></center>
-              <hr></hr>
+              <center><h1>Counsellor Management</h1></center>
+              <hr/>
 
               <div class='table-responsive'>
                 <table class='table table-bordered'>
                   <tbody>
                     <tr>
                       <td>Name</td>
+                      <td>
                       <input type='text'
                         value={name}
                         name="Name"
                         onChange={(event) => setName(event.target.value)} />
+                      </td>
                     </tr>
+
                     <tr>
                       <td>Email</td>
+                      <td>
                       <input type='text'
                         value={email}
                         name="Email"
                         onChange={(event) => setEmail(event.target.value)} />
+                      </td>
                     </tr>
+
                     <tr>
                       <td>MobileNo</td>
+                      <td>
                       <input type='text'
                         value={mobileNo}
                         name="MobileNumber"
-                        onChange={(event) => setMobileNumber(event.target.value)} />                          </tr>
+                        onChange={(event) => setMobileNumber(event.target.value)} />                          
+                      </td>
+                    </tr>
+                      
                     <tr>
                       <td>State</td>
+                      <td>
                       <input type='text'
                         value={stateName}
                         name="State"
-                        onChange={(event) => setStateName(event.target.value)} />                          </tr>
+                        onChange={(event) => setStateName(event.target.value)} />                          
+                      </td>
+                    </tr>
+                    
                     <tr>
                       <td>District</td>
+                      <td>
                       <input type='text'
                         value={districtName}
                         name="District"
-                        onChange={(event) => setDistrictName(event.target.value)} />                          </tr>
+                        onChange={(event) => setDistrictName(event.target.value)} />                          
+                      </td>
+                    </tr>
+                    
                     <tr>
                       <td>Village</td>
+                      <td>
                       <input type='text'
                         value={village}
                         name="Village"
-                        onChange={(event) => setVillage(event.target.value)} />                          </tr>
+                        onChange={(event) => setVillage(event.target.value)} />                          
+                      </td>
+                    </tr>
+
                     <tr>
                       <td>Password</td>
+                      <td>
                       <input type='text'
                         value={password}
                         name="Password"
-                        onChange={(event) => setPassword(event.target.value)} />                          </tr>
+                        onChange={(event) => setPassword(event.target.value)} />                          
+                      </td>
+                    </tr>
 
                     <tr>
                       <td></td>

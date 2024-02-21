@@ -72,7 +72,7 @@ function FarmerManagement() {
 
             <main role="main" class="col-md-9 ml-sm-auto col-lg-10 pt-3 px-4">
             <div className='container'>
-              <center><h1>Welcome to dashboard!</h1></center>
+              <center><h1>Farmer Management</h1></center>
               <hr></hr>
               <div class='table-responsive'>
                 <table class='table table-striped'>

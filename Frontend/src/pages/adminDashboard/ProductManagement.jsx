@@ -179,7 +179,7 @@ function ProductManagement() {
 
           <main role="main" className="col-md-9 ml-sm-auto col-lg-10 pt-3 px-4">
   <div className='container'>
-    <center><h1>Welcome to Product dashboard!</h1></center>
+    <center><h1>Product Management</h1></center>
     <hr />
 
     <div className='table-responsive'>

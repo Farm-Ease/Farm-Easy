@@ -96,4 +96,5 @@ body {
 main {
   margin-left: 250px; /* Adjust to match sidebar width */
   padding-top: 20px; /* Adjust to match any top padding in sidebar */
+  color: green;
 }
