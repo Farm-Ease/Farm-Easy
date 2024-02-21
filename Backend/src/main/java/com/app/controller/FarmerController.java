@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.app.dto.ApmcAppointmentDTO;
 import com.app.dto.CounsellorDTO;
+import com.app.dto.CropDTO;
 import com.app.dto.FarmerAppointmentDTO;
 import com.app.dto.FarmerDTO;
 import com.app.service.CounsellorService;
@@ -79,5 +80,13 @@ public class FarmerController {
 	@GetMapping("/getAppointment/{farmerId}")
 	public ResponseEntity<?> getAppointmentByFarmerId(@PathVariable Long farmerId){
 		return ResponseEntity.ok(farmerService.getAppointmentByFarmerId(farmerId));
+	}
+	
+	@PostMapping("/addCrops")
+	public ResponseEntity<?> addCrops(@RequestBody @Valid CropDTO cropDTO ){
+		System.out.println("Inside ading crops "+ cropDTO.getFarmer_id());
+		return ResponseEntity
+				.status(HttpStatus.CREATED)
+				.body(farmerService.addCrop(cropDTO));
 	}
 }

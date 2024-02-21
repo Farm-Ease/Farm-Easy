@@ -17,16 +17,19 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.app.custom_exceptions.ResourceNotFoundException;
 import com.app.dao.ApmcAppointmentDao;
+import com.app.dao.CropDao;
 import com.app.dao.FarmerDao;
 import com.app.dto.ApiResponse;
 import com.app.dto.ApmcAppointmentDTO;
 import com.app.dto.CounsellorDTO;
+import com.app.dto.CropDTO;
 import com.app.dto.FarmerAppointmentDTO;
 import com.app.dto.FarmerDTO;
 import com.app.dto.Signup;
 import com.app.dto.UserDetailDTO;
 import com.app.entities.ApmcAppointment;
 import com.app.entities.Counsellor;
+import com.app.entities.Crop;
 import com.app.entities.Farmer;
 
 @Service
@@ -44,6 +47,9 @@ public class FarmerServiceImpl implements FarmerService{
 	
 	@Autowired
 	private PasswordEncoder encoder;
+	
+	@Autowired
+	private CropDao cropDao;
 	
 	@Override
 	public ApmcAppointmentDTO addAppointment(ApmcAppointmentDTO apptDTO) {
@@ -134,6 +140,21 @@ public class FarmerServiceImpl implements FarmerService{
 		return result;
 	}
 
+
+
+	@Override
+	public CropDTO addCrop(CropDTO cropDTO) {
+		Farmer farmer = farmerDao.findById(cropDTO.getFarmer_id())
+				.orElseThrow(() -> new ResourceNotFoundException("Invalid farmer Id!!!"));
+		Crop cropEntity = mapper.map(cropDTO, Crop.class);
+		
+		farmer.setCrops(cropEntity);
+		//farmerDao.save(farmer);
+		Crop savedCrop = cropDao.save(cropEntity);
+		return mapper.map(savedCrop, CropDTO.class);
+	}
+
+
 	@Override
 	 public UserDetailDTO getUserDetailsByEmail(String email) {
        Farmer userEntity = farmerDao.findByEmail(email)
@@ -141,5 +162,6 @@ public class FarmerServiceImpl implements FarmerService{
 	                                              new ResourceNotFoundException("User not found with Email id : " + email));
        return mapper.map(userEntity, UserDetailDTO.class);
    }
+
 		
 }

@@ -184,37 +184,37 @@ function CounsellorManagement() {
   return (
     <>
       <Navbar />
-      <div className="container-fluid">
-        <div className="row">
-          <nav className="col-md-2 col-12 d-md-block bg-light sidebar">
-            <div className="sidebar-sticky">
-              <ul className="nav flex-column">
-                <li className="nav-item">
-                  <a className="nav-link active" href="/adminDashboard">
+      <div class="container-fluid">
+        <div class="row">
+          <nav class="col-md-2 d-none d-md-block bg-light sidebar">
+            <div class="sidebar-sticky">
+              <ul class="nav flex-column">
+                <li class="nav-item">
+                  <a class="nav-link active" href="/adminDashboard">
                     <span data-feather="home"></span>
-                    Dashboard <span className="sr-only">(current)</span>
+                    Dashboard <span class="sr-only">(current)</span>
                   </a>
                 </li>
-                <li className="nav-item">
-                  <a className="nav-link" href="/adminDashboard/mngfarmer">
+                <li class="nav-item">
+                  <a class="nav-link" href="/adminDashboard/mngfarmer">
                     <span data-feather="file"></span>
                     Farmers
                   </a>
                 </li>
-                <li className="nav-item">
-                  <a className="nav-link" href="/adminDashboard/mngcounsellor">
+                <li class="nav-item">
+                  <a class="nav-link" href="/adminDashboard/mngcounsellor">
                     <span data-feather="shopping-cart"></span>
                     Counsellor
                   </a>
                 </li>
-                <li className="nav-item">
-                  <a className="nav-link" href="/adminDashboard/mngappointment">
+                <li class="nav-item">
+                  <a class="nav-link" href="/adminDashboard/mngappointment">
                     <span data-feather="users"></span>
                     APMC Appointments
                   </a>
                 </li>
-                <li className="nav-item">
-                  <a className="nav-link" href="/adminDashboard/mngproduct">
+                <li class="nav-item">
+                  <a class="nav-link" href="/adminDashboard/mngproduct">
                     <span data-feather="bar-chart-2"></span>
                     Products
                   </a>
@@ -222,7 +222,6 @@ function CounsellorManagement() {
               </ul>
             </div>
           </nav>
-
 
           <main role="main" class="col-md-auto col-lg-10 ml-sm-auto pt-3 px-4">
             <div className='container'>

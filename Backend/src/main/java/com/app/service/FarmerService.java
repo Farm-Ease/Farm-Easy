@@ -9,6 +9,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.app.dto.ApiResponse;
 import com.app.dto.ApmcAppointmentDTO;
+import com.app.dto.CropDTO;
 import com.app.dto.FarmerAppointmentDTO;
 import com.app.dto.FarmerDTO;
 import com.app.dto.Signup;
@@ -33,5 +34,7 @@ public interface FarmerService {
 	List<ApmcAppointmentDTO> getAppointmentByFarmerId(Long farmerId);
 	
 	UserDetailDTO getUserDetailsByEmail(String email);
+
+	CropDTO addCrop(CropDTO cropDTO);
 
 }
