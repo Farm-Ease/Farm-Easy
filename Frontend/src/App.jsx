@@ -12,6 +12,8 @@ import SchemesPage from './pages/schemes/SchemesPage';
 import CounsellingPage from './pages/counselling/CounsellingPage';
 import AdminDashboard from './pages/adminDashboard/AdminDashboard';
 import AdminRoutes from './pages/adminDashboard/AdminRoutes';
+import CounsellorRoutes from './pages/counsellorDashboard/CounsellorRoutes';
+import FarmerRoutes from './pages/farmerDashboard/FarmerRoutes';
 import CounsellorManagement from './pages/adminDashboard/CounsellorManagement';
 import FarmerDashboard from './pages/farmerDashboard/FarmerDashboard';
 import CounsellorDashboard from './pages/counsellorDashboard/CounsellorDashboard';
@@ -25,6 +27,7 @@ import CounsellorProfile from './pages/counsellorDashboard/CounsellorProfile';
 import { FormDataProvider } from './FormDataContext/FormDataContext';
 import Receipt from './pages/receipt/receipt';
 import ApmcAppointmentManagement from './pages/farmerDashboard/ApmcAppointmentMangement';
+import ProductManagement from './pages/adminDashboard/ProductManagement';
 import { AuthProvider } from './contexts/AuthContext';
 
 function App() {
@@ -40,73 +43,52 @@ function App() {
       <Route path="/adminLogin" element={<AdminLoginForm/>}></Route>
       <Route path="/counsellorLogin" element={<CounsellorLoginForm/>}></Route>
       <Route path="/apmc" element={<ApmcPage/>}></Route>
-      {/* <Route path="/apmcSell" element={<ApmcSellPage/>}></Route> */}
       <Route path="/apmcSell" element={ <FormDataProvider><ApmcSellPage/></FormDataProvider>}></Route>
       <Route path="/receipt" element={<FormDataProvider><Receipt/></FormDataProvider>}></Route>
       <Route path="/apmcBuy" element={<ApmcBuy/>}></Route>
       <Route path="/weather" element={<WeatherPage/>}></Route>
       <Route path="/counselling" element={<CounsellingPage/>}></Route>
-      <Route path="/farmerDashboard" element={<FarmerDashboard/>}></Route>
-      <Route path="/counsellorDashboard" element={<CounsellorDashboard/>}></Route>
       <Route path="/schemes" element={<SchemesPage/>}></Route>
       <Route path="/cart" element={<Cart/>}></Route>
+      <Route path='/farmerDashboard/manageFarmerApmcAppointment' element ={<ApmcAppointmentManagement/>}></Route>
+      <Route path='/adminDashboard/mngcounsellor' element={<CounsellorManagement />}></Route>
+      <Route path='/adminDashboard/mngfarmer' element={<FarmerManagement />}></Route>
+      <Route path='/adminDashboard/mngappointment' element={<AppointmentManagement />}></Route>
+      <Route path='/adminDashboard/mngproduct' element={<ProductManagement /> }></Route>
 
       <Route
           path='adminDashboard'
           element={
-            //<AdminRoutes>
+            <AdminRoutes>
               <AdminDashboard />
-           // </AdminRoutes>
+            </AdminRoutes>
           }
       >
       </Route>
 
-      <Route
-        path='/adminDashboard/mngcounsellor'
-          element={
-            //<AdminRoutes>
-              <CounsellorManagement />
-            //</AdminRoutes>
+      <Route 
+        path = '/counsellorDashboard'
+          element = {
+              <CounsellorRoutes>
+                <CounsellorDashboard/>
+              </CounsellorRoutes>
           }
-      >
-      </Route>
-      
-
-      <Route
-        path='/adminDashboard/mngfarmer'
-          element={
-            //<AdminRoutes>
-              <FarmerManagement />
-            //</AdminRoutes>
-          }
-      >
+        >
       </Route>
 
-      <Route
-        path='/adminDashboard/mngappointment'
-          element={
-            //<AdminRoutes>
-              <AppointmentManagement />
-            //</AdminRoutes>
+      <Route 
+        path = '/farmerDashboard'
+          element = {
+              <FarmerRoutes>
+                <FarmerDashboard/>
+              </FarmerRoutes>
           }
-      >
+        >
       </Route>
-      <Route path = '/counsellorDashboard/profile'
-      element = {<CounsellorProfile/>}/>
 
-      <Route
-      path='/farmerDashboard/manageFarmerApmcAppointment'
-      element ={
-        <ApmcAppointmentManagement/>
-      }
-    >
-
-    </Route>
       {/* <Route path = '/counsellorDashboard/profile'
       element = {<CounsellorProfile/>}/> */}
     </Routes>
-
-    
 
     <ToastContainer />
     </AuthProvider>

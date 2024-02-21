@@ -1,3 +1,4 @@
+
 import React, { useRef } from 'react';
 import { useFormData } from '../../FormDataContext/FormDataContext';
 import Navbar from '../../Components/navbar/Navbar1';
@@ -61,5 +62,6 @@ function Receipt() {
         </>
     );
 };
+
 
 export default Receipt;

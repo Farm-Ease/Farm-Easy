@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import './CounsellorDashboard.css'
 import axios from 'axios';
-import Navbar from '../../Components/navbar/Navbar1'
+import Navbar2 from '../../Components/navbar/Navbar2'
 import { toast } from 'react-toastify';
 import CounsellorProfile from './CounsellorProfile';
 
@@ -56,6 +56,7 @@ function CounsellorDashboard() {
 
   return (
     <>
+    <Navbar2/>
       <div class="container-fluid">
         <div class="row">
           <nav class="col-md-2 d-none d-md-block bg-light sidebar">

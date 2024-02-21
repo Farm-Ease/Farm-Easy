@@ -105,4 +105,12 @@ public class AdminServiceImpl implements AdminService{
 				.map(product -> mapper.map(product, Product.class))
 				.collect(Collectors.toList());
 	}
+
+	@Override
+	public ApiResponse deleteProduct(Long productId) {
+		// TODO Auto-generated method stub
+		Product product = productDao.findById(productId).orElseThrow(()->new ResourceNotFoundException("Invalid Product id"));
+		productDao.delete(product);
+		return new ApiResponse("Product with Id "+product.getId()+" deleted ....");
+	}
 }
