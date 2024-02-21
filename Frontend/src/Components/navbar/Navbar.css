@@ -44,7 +44,7 @@ path{
 .content-1 {
     text-align: center;
     color: white;
-    margin: 80px 10px 10px 10px;
+    margin: 120px 250px 10px 10px;
     font-family: 'Courgette', cursive;
     text-transform: capitalize;
     font-size: 400%;
@@ -55,7 +55,7 @@ path{
     text-decoration: none;
     align-items: center;
     justify-content: center;
-    margin: 80px auto;
+    margin: 120px 360px 120px 360px;
     height: 60px;
     box-sizing: border-box;
     width: 250px;
@@ -68,6 +68,26 @@ path{
     font-weight: bolder;
     font-size: 150%;
     transition: 0.5s;
+}
+
+.bt {
+    margin: 120px 360px 200px 380px;
+    display: flex;
+        text-decoration: none;
+        align-items: center;
+        justify-content: center;
+        height: 60px;
+        box-sizing: border-box;
+        width: 250px;
+        background-color: yellow;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        color: green;
+        font-family: 'Montserrat', sans-serif;
+        font-weight: bolder;
+        font-size: 150%;
+        transition: 0.5s;
 }
 
 .css-k008qs{
@@ -117,7 +137,7 @@ path{
 .content-2 {
     text-align: center;
     color: white;
-    margin: 50px 10px 10px 10px;
+    margin: 50px 120px 10px 10px;
     font-family: 'Staatliches', cursive;
     letter-spacing: 2px;
     font-size: 500%;

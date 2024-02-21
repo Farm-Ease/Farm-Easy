@@ -9,6 +9,7 @@ import ListItem from '@mui/material/ListItem';
 import MenuIcon from '@mui/icons-material/Menu';
 import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
+import { Link } from 'react-router-dom';
 import './Navbar.css';
 
 
@@ -88,14 +89,13 @@ export default function DrawerAppBar(props) {
           {drawer}
         </Drawer>
       </Box>
-      <Box component="main" sx={{ p: 3 }} id="HOME">
+      <Box component="main" sx={{ p: 1 }} id="HOME">
         <Toolbar />
         <Typography component={'div'}>
           <>
           <h1 className="content-1">Farm-Easy</h1>
-          <h1 className="content-2">Single App For
-                All your problems</h1>
-          <a href="#SERVICES" className='bt-1'>At Your Service</a>
+          <h1 className="content-2">Single App For All your problems</h1>
+          <a href="#SERVICES" className='bt'>At Your Service</a>
           </>
         </Typography>
       </Box>
