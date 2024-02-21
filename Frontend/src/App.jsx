@@ -25,6 +25,7 @@ import CounsellorProfile from './pages/counsellorDashboard/CounsellorProfile';
 import { FormDataProvider } from './FormDataContext/FormDataContext';
 import Receipt from './pages/receipt/receipt';
 import ApmcAppointmentManagement from './pages/farmerDashboard/ApmcAppointmentMangement';
+import ProductManagement from './pages/adminDashboard/ProductManagement';
 import { AuthProvider } from './contexts/AuthContext';
 
 function App() {
