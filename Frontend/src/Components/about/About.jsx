@@ -6,11 +6,7 @@ import TimelineConnector from '@mui/lab/TimelineConnector';
 import TimelineContent from '@mui/lab/TimelineContent';
 import TimelineOppositeContent from '@mui/lab/TimelineOppositeContent';
 import TimelineDot from '@mui/lab/TimelineDot';
-import PlayCircleFilledIcon from '@mui/icons-material/PlayCircleFilled';
-import AccountBalanceIcon from '@mui/icons-material/AccountBalance';
-import AdbIcon from '@mui/icons-material/Adb';
 import OpenWithIcon from '@mui/icons-material/OpenWith';
-import FiberManualRecordIcon from '@mui/icons-material/FiberManualRecord';
 import { Typography } from '@mui/material';
 import Button from '@mui/material/Button';
 import LinkedInIcon from '@mui/icons-material/LinkedIn'; // Import LinkedIn icon from Material-UI
@@ -47,7 +43,6 @@ export default function About() {
             style={{ textTransform: 'none' }} 
           >
           </Button>
-
         </TimelineOppositeContent>
         <TimelineSeparator>
           <TimelineConnector />
